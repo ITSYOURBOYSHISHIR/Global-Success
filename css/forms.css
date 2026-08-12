@@ -1,0 +1,891 @@
+/* Modern elegant forms — Enrol + Contact */
+
+/* ── Shared field system ── */
+.sa-form,
+#registerForm,
+#contactForm {
+  --field-h: 52px;
+  --field-radius: 10px;
+  --field-border: #E8EAED;
+  --field-bg: #FAFBFC;
+  --field-focus: var(--sa-red);
+  --field-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12);
+}
+
+.sa-field {
+  position: relative;
+  margin-bottom: 0;
+}
+
+.sa-field label,
+.js-form-group label,
+.form-group label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--sa-black);
+  margin-bottom: 0.45rem;
+  letter-spacing: 0.01em;
+  text-transform: none;
+}
+
+.sa-field label .req,
+.js-form-group label .req {
+  color: var(--sa-red);
+  margin-left: 2px;
+}
+
+.sa-field input,
+.sa-field textarea,
+.sa-field select,
+.js-form-group input,
+.js-form-group textarea,
+.js-form-group select,
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  min-height: var(--field-h);
+  padding: 0.8rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  line-height: 1.4;
+  color: var(--sa-black);
+  background: var(--field-bg);
+  border: 1.5px solid var(--field-border);
+  border-radius: var(--field-radius);
+  appearance: none;
+  transition:
+    border-color 0.2s var(--ease-dingoos),
+    background 0.2s var(--ease-dingoos),
+    box-shadow 0.2s var(--ease-dingoos);
+}
+
+.sa-field textarea,
+.js-form-group textarea,
+.form-group textarea {
+  min-height: 120px;
+  resize: vertical;
+  padding-top: 0.85rem;
+}
+
+.sa-field input::placeholder,
+.sa-field textarea::placeholder,
+.js-form-group input::placeholder,
+.js-form-group textarea::placeholder,
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #A1A8B3;
+}
+
+.sa-field input:hover,
+.sa-field textarea:hover,
+.js-form-group input:hover,
+.js-form-group textarea:hover,
+.form-group input:hover,
+.form-group textarea:hover {
+  border-color: #D1D5DB;
+  background: #fff;
+}
+
+.sa-field input:focus,
+.sa-field textarea:focus,
+.js-form-group input:focus,
+.js-form-group textarea:focus,
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--field-focus);
+  background: #fff;
+  box-shadow: var(--field-shadow);
+}
+
+/* Custom select — sharp dropdown */
+.custom-select-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.custom-select-wrap.open {
+  z-index: 200;
+}
+
+.custom-select-trigger {
+  width: 100%;
+  min-height: var(--field-h);
+  text-align: left;
+  padding: 0.8rem 2.75rem 0.8rem 1rem;
+  border: 1.5px solid var(--field-border);
+  border-radius: var(--field-radius);
+  background: var(--field-bg);
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  color: var(--sa-black);
+  cursor: pointer;
+  transition:
+    border-color 0.2s var(--ease-dingoos),
+    background 0.2s var(--ease-dingoos),
+    box-shadow 0.2s var(--ease-dingoos);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M4 6l4 4 4-4' stroke='%231A1A1A' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: calc(100% - 14px) center;
+}
+
+.custom-select-trigger:hover {
+  border-color: #D1D5DB;
+  background-color: #fff;
+}
+
+.custom-select-trigger:focus,
+.custom-select-wrap.open .custom-select-trigger {
+  outline: none;
+  border-color: var(--field-focus);
+  background-color: #fff;
+  box-shadow: var(--field-shadow);
+}
+
+.custom-select-list {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  z-index: 200;
+  background: #fff;
+  border: 1.5px solid var(--field-border);
+  border-radius: 12px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.1);
+  max-height: 280px;
+  overflow-y: auto;
+  list-style: none;
+  margin: 0;
+  padding: 0.4rem;
+}
+
+.custom-select-option {
+  padding: 0.7rem 0.85rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: var(--sa-black);
+  border-radius: 8px;
+  transition: background 0.15s ease;
+}
+
+.custom-select-option:hover,
+.custom-select-option.selected {
+  background: var(--sa-red-soft);
+  color: var(--sa-red);
+}
+
+.custom-select-group {
+  padding: 0.55rem 0.85rem 0.25rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--sa-gray);
+}
+
+/* ── Submit button ── */
+.sa-btn-submit,
+.js-submit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  min-height: 54px;
+  padding: 0 2rem;
+  margin-top: 1.25rem;
+  border: none;
+  border-radius: var(--field-radius);
+  background: var(--sa-black);
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    background 0.25s var(--ease-dingoos),
+    transform 0.2s var(--ease-dingoos),
+    box-shadow 0.25s var(--ease-dingoos);
+  box-shadow: 0 4px 20px rgba(26, 26, 26, 0.18);
+}
+
+.sa-btn-submit:hover,
+.js-submit-btn:hover {
+  background: var(--sa-red);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(239, 68, 68, 0.28);
+}
+
+.sa-btn-submit:active,
+.js-submit-btn:active {
+  transform: translateY(0);
+}
+
+.sa-btn-submit::after,
+.js-submit-btn::after {
+  content: "→";
+  font-size: 1.1rem;
+  transition: transform 0.2s ease;
+}
+
+.sa-btn-submit:hover::after,
+.js-submit-btn:hover::after {
+  transform: translateX(4px);
+}
+
+/* ── Form card shell ── */
+.sa-form-card,
+.js-form-card {
+  position: relative;
+  background: #fff;
+  border-radius: 20px;
+  padding: 2.25rem 2.5rem;
+  border: 1px solid #ECEEF2;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 12px 40px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+.sa-form-card::before,
+.js-form-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--sa-red) 0%, var(--sa-black) 100%);
+}
+
+.sa-form-card-head {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #F0F1F4;
+}
+
+.sa-form-card-head h2 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--sa-black);
+  margin: 0 0 0.35rem;
+}
+
+.sa-form-card-head p {
+  font-size: 0.9rem;
+  color: var(--sa-gray);
+  margin: 0;
+  line-height: 1.55;
+}
+
+/* ── Register — stepped sections ── */
+.form-step {
+  border: none;
+  margin: 0 0 0;
+  padding: 0 0 1.75rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-step:not(:last-of-type) {
+  margin-bottom: 1.75rem;
+  border-bottom: 1px solid #F0F1F4;
+}
+
+.form-step legend {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  width: 100%;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--sa-black);
+  margin-bottom: 1.25rem;
+  padding: 0;
+}
+
+.form-step legend::before {
+  content: attr(data-step);
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: var(--sa-black);
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+
+.form-step-hint {
+  font-size: 0.8125rem;
+  color: var(--sa-gray);
+  margin: -0.75rem 0 1rem;
+}
+
+.js-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 1.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.js-form-group { margin-bottom: 1rem; }
+
+.addon-checkbox-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.addon-chip span {
+  display: inline-block;
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  border: 1.5px solid var(--field-border);
+  background: var(--field-bg);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s var(--ease-dingoos);
+}
+
+.addon-chip input:checked + span {
+  background: var(--sa-red);
+  color: #fff;
+  border-color: var(--sa-red);
+  box-shadow: 0 4px 16px rgba(239, 68, 68, 0.25);
+}
+
+.addon-chip span:hover {
+  border-color: var(--sa-red);
+  background: #fff;
+}
+
+.js-form-success {
+  display: none;
+  text-align: center;
+  padding: 3.5rem 2rem;
+  background: linear-gradient(135deg, #FEF2F2 0%, #fff 100%);
+  border-radius: 16px;
+  border: 1px solid #FECACA;
+}
+
+.js-form-success.show { display: block; }
+
+.js-form-success h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--sa-black);
+  margin-bottom: 0.5rem;
+}
+
+.js-form-success p {
+  color: var(--sa-gray);
+  font-size: 0.95rem;
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+/* Register page layout polish */
+.js-register-page {
+  background: linear-gradient(180deg, #FEF8F7 0%, #F5F5F5 100%);
+}
+
+.js-register-header h1 {
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+}
+
+.js-package-summary {
+  border-radius: 20px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.js-package-summary-body h2 {
+  font-family: var(--font-display);
+}
+
+/* ── Contact form section ── */
+.contact-form-section {
+  padding: 4rem 0 5rem;
+  background: linear-gradient(180deg, #F5F5F5 0%, #FEF8F7 100%);
+}
+
+.contact-form-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 2.5rem;
+  align-items: start;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.contact-form-aside {
+  padding-top: 0.5rem;
+}
+
+.contact-form-aside h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  color: var(--sa-black);
+  margin: 0 0 0.75rem;
+}
+
+.contact-form-aside > p {
+  color: var(--sa-gray);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  margin-bottom: 1.75rem;
+}
+
+.contact-quick-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.contact-quick-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.15rem 1.25rem;
+  background: #fff;
+  border: 1px solid #ECEEF2;
+  border-radius: 14px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+  color: inherit;
+}
+
+.contact-quick-card:hover {
+  border-color: var(--sa-red);
+  box-shadow: 0 6px 24px rgba(239, 68, 68, 0.08);
+}
+
+.contact-quick-icon {
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: var(--sa-red-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.contact-quick-card strong {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--sa-gray);
+  margin-bottom: 0.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.contact-quick-card a,
+.contact-quick-card span {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--sa-black);
+  text-decoration: none;
+}
+
+.contact-quick-card a:hover {
+  color: var(--sa-red);
+}
+
+.contact-form-wrap {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+}
+
+.contact-form-wrap .sa-form-card {
+  margin: 0;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 1.25rem;
+}
+
+.form-group { margin-bottom: 0; }
+
+.form-group.full { grid-column: 1 / -1; }
+
+.contact-form-note {
+  text-align: center;
+  margin-top: 2.5rem;
+  font-size: 0.9rem;
+  color: var(--sa-gray);
+}
+
+.contact-form-note a {
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .contact-form-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .js-form-row { grid-template-columns: 1fr; }
+  .form-grid { grid-template-columns: 1fr; }
+
+  .sa-form-card,
+  .js-form-card {
+    padding: 1.75rem 1.5rem;
+  }
+}
+
+.custom-select-wrap.field-error .custom-select-trigger {
+  border-color: var(--sa-red);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
+}
+
+.contact-topic-field.field-error .goal-chip-grid {
+  outline: 2px solid var(--sa-red);
+  outline-offset: 4px;
+  border-radius: 12px;
+}
+
+.goal-picker-field.field-error .goal-chip-grid {
+  outline: 2px solid var(--sa-red);
+  outline-offset: 4px;
+  border-radius: 12px;
+}
+
+@media (max-width: 480px) {
+  .sa-form-card,
+  .js-form-card {
+    padding: 1.5rem 1.25rem;
+    border-radius: 16px;
+  }
+}
+
+/* ── Visual package picker (enrol form) ── */
+.package-picker-group-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--sa-gray);
+  margin: 1.25rem 0 0.65rem;
+}
+
+.package-picker-group-label--optional {
+  color: var(--sa-gray-muted);
+  font-weight: 600;
+}
+
+.package-picker-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 0.65rem;
+}
+
+.package-picker-grid--addons {
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+
+.package-pick-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 0;
+  border: 2px solid var(--field-border);
+  border-radius: 12px;
+  background: #fff;
+  cursor: pointer;
+  overflow: hidden;
+  text-align: left;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.package-pick-check {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  z-index: 2;
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.85);
+  opacity: 0;
+  transition: opacity 0.2s ease, background 0.2s ease;
+}
+
+.package-pick-card.selected .package-pick-check {
+  opacity: 1;
+  background: var(--sa-red);
+  border-color: var(--sa-red);
+}
+
+.package-pick-card.selected .package-pick-check::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  width: 5px;
+  height: 9px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.package-selection-count {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--sa-gray);
+  margin: 0 0 0.5rem;
+  padding: 0.55rem 0.85rem;
+  background: var(--field-bg);
+  border-radius: 8px;
+  border: 1px dashed var(--field-border);
+}
+
+.package-selection-count.has-selection {
+  color: var(--sa-red-dark);
+  background: var(--sa-red-soft);
+  border-color: rgba(239, 68, 68, 0.35);
+  border-style: solid;
+}
+
+.form-step.field-error .goal-chip-grid {
+  outline: 2px solid var(--sa-red);
+  outline-offset: 4px;
+  border-radius: 12px;
+}
+
+.summary-free-perks {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.summary-free-perks-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0 0 0.5rem;
+}
+
+.summary-free-perks-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.55;
+}
+
+.summary-free-perks-list li::before {
+  content: "✓ ";
+  color: var(--sa-red);
+  font-weight: 700;
+}
+
+.package-pick-card img {
+  width: 100%;
+  height: 72px;
+  object-fit: cover;
+  display: block;
+}
+
+.package-pick-name {
+  display: block;
+  padding: 0.5rem 0.55rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--sa-black);
+}
+
+.package-pick-badge {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  font-size: 0.6rem;
+  font-weight: 700;
+  background: var(--sa-red);
+  color: #fff;
+  padding: 0.15rem 0.45rem;
+  border-radius: 999px;
+}
+
+.package-pick-card:hover {
+  border-color: var(--sa-red);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.12);
+}
+
+.package-pick-card.selected {
+  border-color: var(--sa-red);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+  background: var(--sa-red-soft);
+}
+
+.package-pick-card.selected .package-pick-name {
+  color: var(--sa-red);
+}
+
+/* Add-on chip buttons */
+.addon-checkbox-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.addon-chip-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  border: 1.5px solid var(--field-border);
+  border-radius: 999px;
+  background: var(--field-bg);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--sa-black);
+  cursor: pointer;
+  transition: all 0.2s var(--ease-dingoos);
+}
+
+.addon-chip-check {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  border: 1.5px solid var(--field-border);
+  background: #fff;
+  flex-shrink: 0;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.addon-chip-btn.selected {
+  background: var(--sa-red);
+  border-color: var(--sa-red);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(239, 68, 68, 0.25);
+}
+
+.addon-chip-btn.selected .addon-chip-check {
+  background: #fff;
+  border-color: #fff;
+}
+
+.addon-chip-btn.selected .addon-chip-check::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 1px;
+  width: 5px;
+  height: 9px;
+  border: solid var(--sa-red);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.addon-chip-btn:hover:not(.selected) {
+  border-color: var(--sa-red);
+  background: #fff;
+}
+
+/* Main goal chips — practical picker */
+.goal-picker-field {
+  grid-column: 1 / -1;
+}
+
+.goal-chip-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.65rem;
+  margin-top: 0.5rem;
+}
+
+.goal-chip-btn {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  padding: 0.75rem 0.9rem;
+  border: 1.5px solid var(--field-border);
+  border-radius: 12px;
+  background: var(--field-bg);
+  font-family: var(--font-body);
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s var(--ease-dingoos);
+}
+
+.goal-chip-icon {
+  font-size: 1.25rem;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.goal-chip-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.goal-chip-text strong {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--sa-black);
+  line-height: 1.3;
+}
+
+.goal-chip-text small {
+  font-size: 0.78rem;
+  color: var(--sa-gray);
+  line-height: 1.35;
+}
+
+.goal-chip-btn:hover:not(.selected) {
+  border-color: var(--sa-red);
+  background: #fff;
+}
+
+.goal-chip-btn.selected {
+  border-color: var(--sa-red);
+  background: var(--sa-red-soft);
+  box-shadow: 0 4px 16px rgba(239, 68, 68, 0.15);
+}
+
+.goal-chip-btn.selected .goal-chip-text strong {
+  color: var(--sa-red-dark);
+}
+
+@media (max-width: 640px) {
+  .goal-chip-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 380" fill="none" role="img" aria-label="Arrive in Australia with support">
+  <rect width="420" height="380" rx="24" fill="#FEF8F7"/>
+  <ellipse cx="210" cy="340" rx="160" ry="18" fill="#FEE2E2"/>
+
+  <!-- Sky gradient band -->
+  <rect x="0" y="0" width="420" height="185" rx="24" fill="#FEE2E2" opacity="0.55"/>
+
+  <!-- Sun -->
+  <circle cx="340" cy="72" r="28" fill="#FBBF24" opacity="0.85"/>
+  <circle cx="340" cy="72" r="20" fill="#FDE68A"/>
+
+  <!-- Clouds -->
+  <ellipse cx="90" cy="58" rx="34" ry="16" fill="#fff" opacity="0.9"/>
+  <ellipse cx="115" cy="52" rx="26" ry="14" fill="#fff" opacity="0.9"/>
+  <ellipse cx="200" cy="48" rx="30" ry="14" fill="#fff" opacity="0.75"/>
+
+  <!-- Airplane arriving -->
+  <g transform="translate(118, 78) rotate(-8)">
+    <ellipse cx="72" cy="38" rx="68" ry="16" fill="#fff" stroke="#1A1A1A" stroke-width="2.5"/>
+    <path d="M28 38 L-8 18 L-8 58 Z" fill="#EF4444"/>
+    <path d="M116 38 L152 22 L152 54 Z" fill="#EF4444"/>
+    <rect x="52" y="24" width="40" height="28" rx="5" fill="#E5E7EB" stroke="#1A1A1A" stroke-width="1.5"/>
+    <rect x="58" y="30" width="12" height="10" rx="2" fill="#93C5FD" opacity="0.7"/>
+    <rect x="74" y="30" width="12" height="10" rx="2" fill="#93C5FD" opacity="0.7"/>
+    <!-- Trail -->
+    <path d="M-20 38 Q-40 36 -55 34" stroke="#EF4444" stroke-width="2" stroke-dasharray="4 6" opacity="0.5"/>
+  </g>
+
+  <!-- City skyline hint -->
+  <rect x="30" y="168" width="36" height="90" rx="2" fill="#1A1A1A" opacity="0.12"/>
+  <rect x="72" y="148" width="44" height="110" rx="2" fill="#1A1A1A" opacity="0.18"/>
+  <rect x="122" y="158" width="38" height="100" rx="2" fill="#EF4444" opacity="0.2"/>
+  <path d="M320 258 Q332 210 344 258 Q356 210 368 258 Q380 210 392 258" stroke="#EF4444" stroke-width="3" fill="none" opacity="0.45"/>
+
+  <!-- Welcome sign -->
+  <rect x="48" y="218" width="148" height="78" rx="12" fill="#1A1A1A"/>
+  <rect x="56" y="226" width="132" height="62" rx="8" fill="#111"/>
+  <text x="68" y="252" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#EF4444">WELCOME</text>
+  <text x="68" y="272" font-family="Arial, sans-serif" font-size="11" fill="#fff">to Australia</text>
+  <!-- Checkmark -->
+  <circle cx="168" cy="256" r="14" fill="#EF4444"/>
+  <path d="M161 256 L166 261 L176 249" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Pickup car -->
+  <rect x="228" y="252" width="128" height="44" rx="14" fill="#EF4444"/>
+  <rect x="246" y="232" width="92" height="34" rx="10" fill="#DC2626"/>
+  <rect x="258" y="238" width="36" height="22" rx="4" fill="#FEE2E2" opacity="0.5"/>
+  <circle cx="256" cy="300" r="17" fill="#1A1A1A"/>
+  <circle cx="328" cy="300" r="17" fill="#1A1A1A"/>
+  <circle cx="256" cy="300" r="7" fill="#9CA3AF"/>
+  <circle cx="328" cy="300" r="7" fill="#9CA3AF"/>
+  <!-- Free pickup badge on car -->
+  <rect x="268" y="218" width="72" height="22" rx="11" fill="#fff" stroke="#EF4444" stroke-width="2"/>
+  <text x="278" y="233" font-family="Arial, sans-serif" font-size="9" font-weight="700" fill="#EF4444">FREE PICKUP</text>
+
+  <!-- Student with luggage -->
+  <circle cx="198" cy="208" r="22" fill="#FBBF24"/>
+  <path d="M176 232 Q198 214 220 232 L220 278 L176 278 Z" fill="#1A1A1A"/>
+  <!-- Backpack -->
+  <rect x="218" y="228" width="26" height="34" rx="6" fill="#EF4444" stroke="#1A1A1A" stroke-width="2"/>
+  <rect x="224" y="234" width="14" height="10" rx="2" fill="#FEE2E2"/>
+  <!-- Suitcase -->
+  <rect x="168" y="248" width="32" height="38" rx="6" fill="#374151" stroke="#1A1A1A" stroke-width="2"/>
+  <rect x="178" y="242" width="12" height="8" rx="3" fill="#1A1A1A"/>
+  <line x1="176" y1="260" x2="192" y2="260" stroke="#9CA3AF" stroke-width="2"/>
+
+  <!-- SIM card -->
+  <rect x="300" y="198" width="56" height="38" rx="8" fill="#fff" stroke="#EF4444" stroke-width="2.5"/>
+  <path d="M308 210 L316 210 L316 218 L324 218 L324 226" stroke="#EF4444" stroke-width="2" fill="none"/>
+  <text x="310" y="228" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#EF4444">SIM</text>
+  <!-- Signal waves -->
+  <path d="M348 212 Q354 218 348 224" stroke="#EF4444" stroke-width="2" fill="none" opacity="0.6"/>
+  <path d="M354 206 Q364 218 354 230" stroke="#EF4444" stroke-width="2" fill="none" opacity="0.4"/>
+
+  <!-- Ground line -->
+  <line x1="30" y1="318" x2="390" y2="318" stroke="#FEE2E2" stroke-width="2"/>
+</svg>
