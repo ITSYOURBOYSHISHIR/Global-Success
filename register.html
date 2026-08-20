@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enrol Now | Global Success</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dingoos-theme.css">
+  <link rel="stylesheet" href="css/js-services.css">
+  <link rel="stylesheet" href="css/forms.css">
+  <link rel="stylesheet" href="css/aus-enquiry.css">
+</head>
+<body class="js-page">
+
+  <div class="scroll-progress"><span></span></div>
+
+  <nav class="navbar dingoos-header">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo">
+        <img src="assets/global-success-logo.svg?v=3" alt="">
+        <span class="logo-word"><strong>Global</strong> <em>Success</em></span>
+      </a>
+      <button class="menu-toggle" aria-label="Menu">☰</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#packages">Packages</a></li>
+        <li><a href="live-in-australia.html">Australia</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="register.html" class="nav-cta active">Enrol Now</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="js-register-page">
+    <div class="container js-register-container">
+      <div class="js-register-header">
+        <span class="js-register-badge">Student Enrolment</span>
+        <h1 id="registerTitle">Enrol With Global Success</h1>
+        <p id="registerSubtitle">Pick your goals, choose as many packages as you need, and we will contact you within 24–48 hours.</p>
+      </div>
+
+      <div class="aus-enquiry-layout">
+        <aside class="aus-enquiry-summary" aria-live="polite">
+          <div class="aus-enquiry-summary-visual" id="summaryVisual">
+            <img id="summaryThumb" src="assets/images/heroes/students-australia.jpg" alt="">
+          </div>
+          <div class="aus-enquiry-summary-body">
+            <h3 id="summaryName">Your selection</h3>
+            <p id="summaryDesc">Tap goals and packages — your choices appear here.</p>
+            <ul class="aus-summary-list" id="summaryList">
+              <li class="is-empty">Your goals and packages will appear here as you tap.</li>
+            </ul>
+            <div class="aus-summary-perks">
+              <strong>Free with every package</strong>
+              SIM and activation · Airport pickup Melbourne or Sydney · Transport card top-up · Quiz tools
+            </div>
+          </div>
+        </aside>
+
+        <div class="aus-enquiry-card">
+          <div class="aus-enquiry-card-head">
+            <h2>Enrolment form</h2>
+            <p>Three steps — goals, packages, your details. Tap to select multiple of everything.</p>
+          </div>
+
+          <div class="aus-enquiry-steps" aria-hidden="true">
+            <span class="aus-enquiry-step-pill is-active"><span>1</span> Goals</span>
+            <span class="aus-enquiry-step-pill is-active"><span>2</span> Packages</span>
+            <span class="aus-enquiry-step-pill is-active"><span>3</span> Details</span>
+          </div>
+
+          <div class="js-form-success" id="formSuccess">
+            <h3>Thank you!</h3>
+            <p>Your enrolment request is on its way. A Global Success guide will reply within 24–48 hours.</p>
+          </div>
+
+          <form id="registerForm" class="sa-form">
+            <div class="aus-enquiry-panel" id="panelGoals">
+              <div class="aus-enquiry-panel-head">
+                <h3 data-step="1">What do you need help with?</h3>
+                <span class="aus-selection-badge" id="goalBadge">Pick at least one</span>
+              </div>
+              <p class="aus-enquiry-panel-hint">Tap all that apply — picking a goal can add a matching package for you.</p>
+              <div class="aus-goal-grid goal-chip-grid" id="goalChipGrid" role="group" aria-label="What you need help with"></div>
+              <div id="goalHiddenInputs" aria-hidden="true"></div>
+            </div>
+
+            <div class="aus-enquiry-panel" id="panelPackages">
+              <div class="aus-enquiry-panel-head">
+                <h3 data-step="2">Choose your packages</h3>
+                <span class="aus-selection-badge" id="packageBadge">Tap to add</span>
+              </div>
+              <p class="aus-enquiry-panel-hint">Select every package you want — tap again to remove. Most students pick 2–4.</p>
+
+              <div class="aus-package-section">
+                <h4 class="aus-package-section-title">Before you fly (Nepal)</h4>
+                <div class="aus-package-grid" id="packageGridBefore"></div>
+              </div>
+
+              <div class="aus-package-section">
+                <h4 class="aus-package-section-title">After arrival (Australia)</h4>
+                <div class="aus-package-grid" id="packageGridAfter"></div>
+              </div>
+
+              <div class="aus-package-section">
+                <h4 class="aus-package-section-title">Extra add-ons (optional)</h4>
+                <div class="aus-package-grid" id="packageGridAddons"></div>
+              </div>
+
+              <div id="packageHiddenInputs" aria-hidden="true"></div>
+            </div>
+
+            <div class="aus-enquiry-panel aus-enquiry-details">
+              <div class="aus-enquiry-panel-head">
+                <h3 data-step="3">Your details</h3>
+              </div>
+              <div class="form-grid">
+                <div class="form-group sa-field">
+                  <label for="firstName">First name <span class="req">*</span></label>
+                  <input type="text" id="firstName" name="firstName" required placeholder="First name" autocomplete="given-name">
+                </div>
+                <div class="form-group sa-field">
+                  <label for="lastName">Last name <span class="req">*</span></label>
+                  <input type="text" id="lastName" name="lastName" required placeholder="Last name" autocomplete="family-name">
+                </div>
+                <div class="form-group sa-field">
+                  <label for="phone">Phone <span class="req">*</span></label>
+                  <input type="tel" id="phone" name="phone" required placeholder="0416 000 000" autocomplete="tel">
+                </div>
+                <div class="form-group sa-field">
+                  <label for="email">Email <span class="req">*</span></label>
+                  <input type="email" id="email" name="email" required placeholder="you@email.com" autocomplete="email">
+                </div>
+                <div class="form-group sa-field">
+                  <label for="nationality">Nationality <span class="req">*</span></label>
+                  <select id="nationality" name="nationality" class="custom-select" required>
+                    <option value="">Select nationality</option>
+                    <option value="Nepal" selected>Nepal</option>
+                    <option value="India">India</option>
+                    <option value="Bangladesh">Bangladesh</option>
+                    <option value="Pakistan">Pakistan</option>
+                    <option value="Sri Lanka">Sri Lanka</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <div class="form-group sa-field">
+                  <label for="travelWhen">When do you travel? <span class="req">*</span></label>
+                  <select id="travelWhen" name="travelWhen" class="custom-select" required>
+                    <option value="">Select timing</option>
+                    <option value="As soon as possible">As soon as possible</option>
+                    <option value="Within 3 months">Within 3 months</option>
+                    <option value="Next year">Next year</option>
+                    <option value="Already in Australia">Already in Australia</option>
+                  </select>
+                </div>
+                <div class="form-group sa-field">
+                  <label for="destinationCity">Destination city</label>
+                  <select id="destinationCity" name="destinationCity" class="custom-select">
+                    <option value="">Not sure yet</option>
+                    <option value="Melbourne">Melbourne</option>
+                    <option value="Sydney">Sydney</option>
+                    <option value="Brisbane">Brisbane</option>
+                    <option value="Perth">Perth</option>
+                    <option value="Adelaide">Adelaide</option>
+                    <option value="Gold Coast">Gold Coast</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <div class="form-group sa-field full">
+                  <label for="message">Anything else?</label>
+                  <textarea id="message" name="message" rows="3" placeholder="Study plans, questions, or packages you are unsure about…"></textarea>
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="js-submit-btn sa-btn-submit">Submit Enrolment Request</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer footer-minimal">
+    <div class="container footer-minimal-inner">
+      <a href="index.html" class="footer-logo">
+        <img src="assets/global-success-logo.svg?v=3" alt="" width="36" height="36">
+        <span class="logo-word"><strong>Global</strong> <em>Success</em></span>
+      </a>
+      <div class="footer-minimal-contact">
+        <a href="mailto:info@globalsucess.com.np">info@globalsucess.com.np</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/text-sanitize.js?v=20260817"></script>
+  <script src="js/packages-data.js?v=20260817"></script>
+  <script src="js/custom-select.js?v=20260817"></script>
+  <script src="js/form-handler.js?v=20260819"></script>
+  <script src="js/register.js?v=20260817"></script>
+  <script src="js/dingoos.js?v=20260817"></script>
+</body>
+</html>

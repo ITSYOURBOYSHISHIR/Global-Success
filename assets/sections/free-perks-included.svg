@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 320" fill="none" role="img" aria-label="Free perks included with every package">
+  <rect width="960" height="320" rx="20" fill="#FEF2F2"/>
+  <text x="480" y="42" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#1A1A1A">Free With Every Package</text>
+
+  <!-- SIM and activation -->
+  <g transform="translate(40, 70)">
+    <rect width="200" height="210" rx="14" fill="#fff" stroke="#EF4444" stroke-width="2"/>
+    <rect x="78" y="24" width="44" height="32" rx="6" fill="#FEE2E2" stroke="#EF4444" stroke-width="2"/>
+    <path d="M86 36 L94 36 L94 44 L102 44 L102 52" stroke="#EF4444" stroke-width="2" fill="none"/>
+    <text x="100" y="82" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#1A1A1A">Free SIM Card</text>
+    <text x="100" y="102" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#1A1A1A">and Activation Help</text>
+    <text x="100" y="132" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#6B7280">Included on enrol in Nepal</text>
+  </g>
+
+  <!-- Airport pickup -->
+  <g transform="translate(260, 70)">
+    <rect width="200" height="210" rx="14" fill="#fff" stroke="#EF4444" stroke-width="2"/>
+    <path d="M70 38 L110 48 L130 38 L110 28 Z" fill="#EF4444"/>
+    <rect x="88" y="48" width="24" height="10" rx="3" fill="#DC2626"/>
+    <text x="100" y="88" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#1A1A1A">Free Airport Pickup</text>
+    <text x="100" y="128" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#6B7280">Met at the airport on arrival</text>
+  </g>
+
+  <!-- Transport top-up free -->
+  <g transform="translate(480, 70)">
+    <rect width="200" height="210" rx="14" fill="#fff" stroke="#EF4444" stroke-width="2"/>
+    <rect x="68" y="26" width="64" height="40" rx="8" fill="#1A1A1A"/>
+    <rect x="76" y="34" width="48" height="8" rx="2" fill="#EF4444"/>
+    <rect x="76" y="48" width="32" height="6" rx="2" fill="#6B7280"/>
+    <rect x="72" y="72" width="56" height="18" rx="9" fill="#EF4444"/>
+    <text x="100" y="85" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" font-weight="700" fill="#fff">FREE</text>
+    <text x="100" y="112" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#1A1A1A">Free Transport Card</text>
+    <text x="100" y="132" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#1A1A1A">Top-Up</text>
+    <text x="100" y="162" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#6B7280">Any Australian city</text>
+  </g>
+
+  <!-- Quiz tools -->
+  <g transform="translate(700, 70)">
+    <rect width="200" height="210" rx="14" fill="#fff" stroke="#EF4444" stroke-width="2"/>
+    <rect x="74" y="24" width="52" height="38" rx="6" fill="#FEE2E2" stroke="#EF4444" stroke-width="2"/>
+    <line x1="82" y1="36" x2="118" y2="36" stroke="#EF4444" stroke-width="2"/>
+    <line x1="82" y1="44" x2="110" y2="44" stroke="#EF4444" stroke-width="2"/>
+    <line x1="82" y1="52" x2="114" y2="52" stroke="#EF4444" stroke-width="2"/>
+    <text x="100" y="88" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#1A1A1A">Practice Quiz Tools</text>
+    <text x="100" y="128" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#6B7280">Match your enrolled packages</text>
+  </g>
+</svg>

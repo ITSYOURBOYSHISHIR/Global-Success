@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" role="img" aria-label="Global Success">
+  <defs>
+    <linearGradient id="gs-bg" x1="10" y1="6" x2="54" y2="58" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2E2E33"/>
+      <stop offset="1" stop-color="#101014"/>
+    </linearGradient>
+    <radialGradient id="gs-globe" cx="32" cy="33" r="18" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#45454D"/>
+      <stop offset="0.72" stop-color="#25252B"/>
+      <stop offset="1" stop-color="#16161A"/>
+    </radialGradient>
+    <linearGradient id="gs-rise" x1="14" y1="46" x2="50" y2="18" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FCA5A5"/>
+      <stop offset="0.45" stop-color="#EF4444"/>
+      <stop offset="1" stop-color="#B91C1C"/>
+    </linearGradient>
+    <linearGradient id="gs-shine" x1="22" y1="16" x2="34" y2="28" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="gs-soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="1.2" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <clipPath id="gs-clip">
+      <circle cx="32" cy="32" r="17"/>
+    </clipPath>
+  </defs>
+
+  <!-- App icon base -->
+  <rect width="64" height="64" rx="16" fill="url(#gs-bg)"/>
+  <rect x="1" y="1" width="62" height="62" rx="15" stroke="#FFFFFF" stroke-opacity="0.1"/>
+  <ellipse cx="32" cy="56" rx="20" ry="7" fill="#EF4444" fill-opacity="0.14"/>
+
+  <!-- Globe -->
+  <circle cx="32" cy="32" r="17" fill="url(#gs-globe)"/>
+  <circle cx="32" cy="32" r="17" stroke="#FFFFFF" stroke-opacity="0.22" stroke-width="0.85"/>
+  <ellipse cx="28" cy="24" rx="8" ry="5.5" fill="url(#gs-shine)"/>
+
+  <!-- Minimal grid -->
+  <g stroke="#FFFFFF" stroke-opacity="0.16" stroke-width="0.7" fill="none">
+    <ellipse cx="32" cy="32" rx="17" ry="6.8"/>
+    <ellipse cx="32" cy="32" rx="17" ry="11.5"/>
+    <ellipse cx="32" cy="32" rx="6.8" ry="17"/>
+    <path d="M32 15v34" stroke-linecap="round"/>
+  </g>
+
+  <!-- Success arc -->
+  <g clip-path="url(#gs-clip)">
+    <path
+      d="M15.5 43.5C21.5 35.5 26.5 30 32 28.5 37 27 42 29.5 46.5 36"
+      stroke="url(#gs-rise)"
+      stroke-width="3.15"
+      stroke-linecap="round"
+      fill="none"
+      filter="url(#gs-soft)"/>
+  </g>
+
+  <!-- Arrow + sparkle -->
+  <path
+    d="M45.8 34.8l5.8 3-3.4 4.7"
+    stroke="url(#gs-rise)"
+    stroke-width="2.7"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    fill="none"/>
+  <path
+    d="M40.5 26.5l1.2 2.4 2.6.4-1.9 1.8.45 2.55-2.35-1.25-2.35 1.25.45-2.55-1.9-1.8 2.6-.4z"
+    fill="#FCA5A5"
+    fill-opacity="0.95"/>
+
+  <!-- Lens highlight -->
+  <circle cx="24.5" cy="21.5" r="2" fill="#FFFFFF" fill-opacity="0.16"/>
+</svg>

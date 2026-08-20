@@ -1,0 +1,603 @@
+/* Australia page — interactive enquiry form */
+
+.section-form-wave {
+  padding: 4rem 0 5rem;
+}
+
+.aus-enquiry-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.aus-enquiry-layout {
+  display: grid;
+  grid-template-columns: minmax(260px, 300px) 1fr;
+  gap: 1.75rem;
+  align-items: start;
+}
+
+.aus-enquiry-summary {
+  position: sticky;
+  top: calc(var(--header-h, 72px) + 1rem);
+  background: linear-gradient(160deg, #1a1a1a 0%, #2a2a2a 100%);
+  border-radius: 20px;
+  overflow: hidden;
+  color: #fff;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+}
+
+.aus-enquiry-summary-visual {
+  position: relative;
+  height: 140px;
+  background: #333 center/cover no-repeat;
+}
+
+.aus-enquiry-summary-visual img {
+  position: absolute;
+  right: 1rem;
+  bottom: -28px;
+  width: 88px;
+  height: 88px;
+  border-radius: 14px;
+  object-fit: cover;
+  border: 3px solid #fff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.aus-enquiry-summary-body {
+  padding: 2rem 1.35rem 1.35rem;
+}
+
+.aus-enquiry-summary-body h3 {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0 0 0.35rem;
+  color: #fff;
+}
+
+.aus-enquiry-summary-body > p {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0 0 1rem;
+  line-height: 1.5;
+}
+
+.aus-summary-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.aus-summary-list li {
+  font-size: 0.82rem;
+  padding: 0.45rem 0.65rem;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  line-height: 1.35;
+}
+
+.aus-summary-list li.is-empty {
+  color: rgba(255, 255, 255, 0.5);
+  font-style: italic;
+  background: transparent;
+  padding-left: 0;
+}
+
+.aus-summary-list .summary-tag {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--sa-red);
+  margin-right: 0.35rem;
+}
+
+.aus-summary-perks {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.55;
+}
+
+.aus-summary-perks strong {
+  display: block;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 0.35rem;
+}
+
+.aus-enquiry-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--sa-border);
+}
+
+.aus-enquiry-card-head {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.aus-enquiry-card-head h2 {
+  font-family: var(--font-body);
+  font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+  color: var(--sa-black);
+}
+
+.aus-enquiry-card-head p {
+  color: var(--sa-gray);
+  font-size: 0.95rem;
+  margin: 0;
+  max-width: 520px;
+  margin-inline: auto;
+  line-height: 1.6;
+}
+
+.aus-enquiry-steps {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.aus-enquiry-step-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--sa-gray);
+  background: var(--sa-bg-alt);
+  border: 1px solid transparent;
+}
+
+.aus-enquiry-step-pill span {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--sa-black);
+  color: #fff;
+  font-size: 0.72rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.aus-enquiry-step-pill.is-active {
+  background: var(--sa-red-soft);
+  color: var(--sa-red-dark);
+  border-color: rgba(239, 68, 68, 0.25);
+}
+
+.aus-enquiry-step-pill.is-active span {
+  background: var(--sa-red);
+}
+
+.aus-enquiry-panel {
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #f0f1f4;
+}
+
+.aus-enquiry-panel:last-of-type {
+  border-bottom: none;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0;
+}
+
+.aus-enquiry-panel-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.aus-enquiry-panel-head h3 {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.aus-enquiry-panel-head h3::before {
+  content: attr(data-step);
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: var(--sa-black);
+  color: #fff;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.aus-enquiry-panel-hint {
+  font-size: 0.85rem;
+  color: var(--sa-gray);
+  margin: 0 0 1rem;
+  line-height: 1.5;
+}
+
+.aus-selection-badge {
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  background: var(--field-bg);
+  color: var(--sa-gray);
+  border: 1px dashed var(--field-border);
+  white-space: nowrap;
+}
+
+.aus-selection-badge.has-items {
+  background: var(--sa-red-soft);
+  color: var(--sa-red-dark);
+  border-color: rgba(239, 68, 68, 0.35);
+  border-style: solid;
+}
+
+.aus-goal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 0.6rem;
+}
+
+.aus-goal-grid .goal-chip-btn {
+  padding: 0.65rem 0.75rem;
+}
+
+.aus-goal-grid .goal-chip-text strong {
+  font-size: 0.82rem;
+}
+
+.aus-goal-grid .goal-chip-text small {
+  font-size: 0.72rem;
+}
+
+.aus-package-section {
+  margin-bottom: 1.5rem;
+}
+
+.aus-package-section:last-child {
+  margin-bottom: 0;
+}
+
+.aus-package-section-title {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--sa-gray);
+  margin: 0 0 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--sa-red-soft);
+}
+
+/* Contact — simple form */
+.contact-simple-wrap {
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.contact-simple-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--sa-border);
+}
+
+.contact-simple-card .sa-form-card-head {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.contact-simple-card .sa-form-card-head h2 {
+  font-family: var(--font-body);
+  font-size: 1.35rem;
+  margin: 0 0 0.5rem;
+}
+
+.contact-simple-card .sa-form-card-head p {
+  font-size: 0.9rem;
+  color: var(--sa-gray);
+  margin: 0;
+  line-height: 1.55;
+}
+
+.contact-simple-form .form-group {
+  margin-bottom: 1rem;
+}
+
+.contact-simple-form .sa-btn-submit {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.contact-simple-card .form-success {
+  display: none;
+  text-align: center;
+  padding: 2.5rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.contact-simple-card .form-success.show {
+  display: block;
+}
+
+.contact-simple-card .form-success h3 {
+  font-family: var(--font-body);
+  margin-bottom: 0.5rem;
+}
+
+.contact-simple-card .form-success p {
+  color: var(--sa-gray);
+  margin: 0;
+}
+
+.aus-package-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+  gap: 0.75rem;
+}
+
+.aus-package-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid var(--field-border);
+  border-radius: 14px;
+  background: #fff;
+  cursor: pointer;
+  overflow: hidden;
+  text-align: left;
+  padding: 0;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.aus-package-card:hover {
+  border-color: var(--sa-red);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(239, 68, 68, 0.12);
+}
+
+.aus-package-card.selected {
+  border-color: var(--sa-red);
+  background: var(--sa-red-soft);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.18);
+}
+
+.aus-package-card img {
+  width: 100%;
+  height: 88px;
+  object-fit: cover;
+  display: block;
+}
+
+.aus-package-card-body {
+  padding: 0.65rem 0.7rem 0.75rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.aus-package-phase {
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--sa-gray);
+}
+
+.aus-package-card.selected .aus-package-phase {
+  color: var(--sa-red);
+}
+
+.aus-package-name {
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--sa-black);
+}
+
+.aus-package-card.selected .aus-package-name {
+  color: var(--sa-red-dark);
+}
+
+.aus-package-check {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid var(--field-border);
+  opacity: 0;
+  transition: opacity 0.2s ease, background 0.2s ease;
+}
+
+.aus-package-card.selected .aus-package-check {
+  opacity: 1;
+  background: var(--sa-red);
+  border-color: var(--sa-red);
+}
+
+.aus-package-card.selected .aus-package-check::after {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 3px;
+  width: 5px;
+  height: 10px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.aus-package-popular {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  font-size: 0.58rem;
+  font-weight: 700;
+  background: var(--sa-red);
+  color: #fff;
+  padding: 0.15rem 0.45rem;
+  border-radius: 999px;
+}
+
+.aus-enquiry-details .form-grid {
+  gap: 1rem 1.15rem;
+}
+
+.aus-enquiry-panel.field-error .aus-goal-grid,
+.aus-enquiry-panel.field-error .aus-package-grid {
+  outline: 2px solid var(--sa-red);
+  outline-offset: 4px;
+  border-radius: 14px;
+}
+
+.aus-enquiry-card .js-form-success {
+  display: none;
+  text-align: center;
+  padding: 3rem 1.5rem;
+  background: linear-gradient(135deg, #FEF2F2 0%, #fff 100%);
+  border-radius: 16px;
+  border: 1px solid #FECACA;
+}
+
+.aus-enquiry-card .js-form-success.show {
+  display: block;
+}
+
+.aus-enquiry-card .js-form-success h3 {
+  font-family: var(--font-body);
+  font-size: 1.35rem;
+  margin-bottom: 0.5rem;
+}
+
+.aus-enquiry-card .js-form-success p {
+  color: var(--sa-gray);
+  margin: 0;
+}
+
+/* Australia page — enrol CTA (replaces inline form) */
+.aus-enrol-cta {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 3rem 2rem;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--sa-border);
+}
+
+.aus-enrol-cta-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--sa-red);
+  margin: 0 0 0.5rem;
+}
+
+.aus-enrol-cta h2 {
+  font-family: var(--font-body);
+  font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+  font-weight: 700;
+  margin: 0 0 0.75rem;
+  color: var(--sa-black);
+}
+
+.aus-enrol-cta > p {
+  color: var(--sa-gray);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  margin: 0 0 1.75rem;
+}
+
+.aus-enrol-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.aus-enrol-cta .aus-hero-btn--ghost {
+  background: var(--sa-bg-alt);
+  color: var(--sa-black);
+  border: 1.5px solid var(--sa-border);
+}
+
+.aus-enrol-cta .aus-hero-btn--ghost:hover {
+  background: #fff;
+  border-color: var(--sa-red);
+  color: var(--sa-red);
+}
+
+.js-register-page .aus-enquiry-layout {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+  .aus-enquiry-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .aus-enquiry-summary {
+    position: static;
+    order: -1;
+  }
+
+  .aus-enquiry-summary-visual {
+    height: 100px;
+  }
+
+  .aus-enquiry-card {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .aus-package-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .aus-goal-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .aus-goal-grid {
+    grid-template-columns: 1fr;
+  }
+}
