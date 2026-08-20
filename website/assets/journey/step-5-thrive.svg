@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 380" fill="none" role="img" aria-label="Settle and thrive in Australia">
+  <rect width="420" height="380" rx="24" fill="#FEF2F2"/>
+  <ellipse cx="210" cy="340" rx="160" ry="18" fill="#FEE2E2"/>
+
+  <!-- City skyline -->
+  <rect x="35" y="175" width="48" height="125" rx="3" fill="#1A1A1A" opacity="0.14"/>
+  <rect x="90" y="148" width="58" height="152" rx="3" fill="#1A1A1A" opacity="0.2"/>
+  <rect x="155" y="118" width="72" height="182" rx="3" fill="#EF4444" opacity="0.28"/>
+  <rect x="235" y="158" width="52" height="142" rx="3" fill="#1A1A1A" opacity="0.16"/>
+  <rect x="295" y="138" width="62" height="162" rx="3" fill="#1A1A1A" opacity="0.22"/>
+  <rect x="358" y="168" width="42" height="132" rx="3" fill="#EF4444" opacity="0.18"/>
+
+  <!-- Opera house sails -->
+  <path d="M288 298 Q298 238 308 298 Q318 238 328 298 Q338 238 348 298 Q358 238 368 298" stroke="#EF4444" stroke-width="3.5" fill="none" opacity="0.55"/>
+
+  <!-- Floating success icons -->
+  <!-- Job briefcase -->
+  <rect x="48" y="88" width="58" height="58" rx="14" fill="#fff" stroke="#EF4444" stroke-width="2.5"/>
+  <rect x="62" y="104" width="30" height="22" rx="4" fill="#FEE2E2" stroke="#EF4444" stroke-width="2"/>
+  <path d="M68 104 L68 98 Q73 93 83 93 Q93 93 98 98 L98 104" stroke="#EF4444" stroke-width="2" fill="none"/>
+  <rect x="72" y="112" width="10" height="6" rx="1" fill="#EF4444" opacity="0.5"/>
+
+  <!-- House / renting -->
+  <rect x="168" y="62" width="58" height="58" rx="14" fill="#fff" stroke="#EF4444" stroke-width="2.5"/>
+  <path d="M182 108 L197 88 L212 108 Z" fill="#EF4444" opacity="0.8"/>
+  <rect x="186" y="108" width="22" height="18" rx="2" fill="#FEE2E2" stroke="#1A1A1A" stroke-width="1.5"/>
+  <rect x="192" y="114" width="8" height="12" rx="1" fill="#1A1A1A" opacity="0.3"/>
+
+  <!-- Driving / licence -->
+  <rect x="312" y="78" width="58" height="58" rx="14" fill="#fff" stroke="#EF4444" stroke-width="2.5"/>
+  <circle cx="341" cy="108" r="18" stroke="#1A1A1A" stroke-width="2.5" fill="#FEE2E2"/>
+  <circle cx="341" cy="108" r="6" fill="#1A1A1A"/>
+  <path d="M341 102 L341 98 M335 108 L331 108 M347 108 L351 108 M341 114 L341 118" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round"/>
+
+  <!-- Confetti -->
+  <circle cx="75" cy="52" r="5" fill="#EF4444"/>
+  <circle cx="350" cy="48" r="4" fill="#1A1A1A"/>
+  <rect x="130" y="42" width="8" height="8" rx="2" fill="#EF4444" transform="rotate(25 134 46)"/>
+  <rect x="260" y="38" width="7" height="7" rx="2" fill="#FBBF24" transform="rotate(-15 263 42)"/>
+  <circle cx="210" cy="38" r="4" fill="#EF4444" opacity="0.6"/>
+
+  <!-- Three thriving students -->
+  <!-- Student left -->
+  <circle cx="118" cy="258" r="24" fill="#FBBF24"/>
+  <path d="M94 284 Q118 262 142 284 L142 318 L94 318 Z" fill="#EF4444"/>
+  <!-- Thumbs up -->
+  <circle cx="148" cy="272" r="10" fill="#FBBF24" stroke="#1A1A1A" stroke-width="1.5"/>
+  <rect x="152" y="268" width="6" height="14" rx="3" fill="#FBBF24" stroke="#1A1A1A" stroke-width="1.5"/>
+
+  <!-- Student center (taller, leader) -->
+  <circle cx="210" cy="248" r="28" fill="#FBBF24"/>
+  <path d="M182 278 Q210 250 238 278 L238 322 L182 322 Z" fill="#1A1A1A"/>
+  <!-- Grad cap on center student -->
+  <path d="M188 248 L210 232 L232 248 L210 258 Z" fill="#1A1A1A"/>
+  <rect x="204" y="248" width="12" height="14" fill="#1A1A1A"/>
+
+  <!-- Student right -->
+  <circle cx="302" cy="260" r="24" fill="#FBBF24"/>
+  <path d="M278 286 Q302 264 326 286 L326 318 L278 318 Z" fill="#EF4444"/>
+  <!-- Book in hand -->
+  <rect x="326" y="278" width="22" height="28" rx="3" fill="#fff" stroke="#EF4444" stroke-width="2"/>
+  <line x1="337" y1="278" x2="337" y2="306" stroke="#EF4444" stroke-width="1.5"/>
+
+  <!-- Growth arrow -->
+  <path d="M175 155 L210 125 L245 155" stroke="#EF4444" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <path d="M204 125 L210 115 L216 125" stroke="#EF4444" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <text x="178" y="148" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#EF4444">THRIVE</text>
+
+  <!-- Ground -->
+  <line x1="30" y1="322" x2="390" y2="322" stroke="#FEE2E2" stroke-width="2"/>
+</svg>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mac Terminal Cheat Sheet — Thuldai Project</title>
+  <style>
+    @page { size: A4; margin: 18mm 16mm; }
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-size: 9.5pt;
+      line-height: 1.45;
+      color: #1a1a1a;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+    h1 {
+      font-size: 20pt;
+      color: #7f1d1d;
+      margin: 0 0 6px;
+      border-bottom: 3px solid #b45309;
+      padding-bottom: 8px;
+    }
+    .subtitle { color: #555; font-size: 10pt; margin-bottom: 20px; }
+    h2 {
+      font-size: 12pt;
+      color: #7f1d1d;
+      margin: 22px 0 8px;
+      page-break-after: avoid;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 12px;
+      font-size: 8.8pt;
+      page-break-inside: avoid;
+    }
+    th {
+      background: #fef2f2;
+      color: #7f1d1d;
+      text-align: left;
+      padding: 6px 8px;
+      border: 1px solid #fecaca;
+      font-weight: 700;
+    }
+    td {
+      padding: 5px 8px;
+      border: 1px solid #e5e7eb;
+      vertical-align: top;
+    }
+    td code, p code {
+      font-family: "SF Mono", Menlo, Monaco, monospace;
+      font-size: 8.2pt;
+      background: #f3f4f6;
+      padding: 1px 4px;
+      border-radius: 3px;
+      word-break: break-all;
+    }
+    .daily {
+      background: #fffbeb;
+      border: 1px solid #fcd34d;
+      border-radius: 8px;
+      padding: 12px 14px;
+      margin-top: 16px;
+    }
+    .daily h2 { margin-top: 0; color: #92400e; }
+    .daily pre {
+      margin: 0;
+      font-family: "SF Mono", Menlo, monospace;
+      font-size: 8.5pt;
+      line-height: 1.55;
+      white-space: pre-wrap;
+    }
+    .footer {
+      margin-top: 24px;
+      font-size: 8pt;
+      color: #888;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Mac Terminal Cheat Sheet</h1>
+<p class="subtitle">Useful commands for your Thuldai website &amp; everyday Mac work · August 2026</p>
+
+<h2>Navigate &amp; folders</h2>
+<table>
+  <tr><th>Command</th><th>What it does</th><th>Example</th></tr>
+  <tr><td><code>pwd</code></td><td>Print working directory — where you are now</td><td><code>pwd</code></td></tr>
+  <tr><td><code>cd PATH</code></td><td>Change directory — go into a folder</td><td><code>cd ~/Projects/NEPAL-AUSTRALIA/website</code></td></tr>
+  <tr><td><code>cd ..</code></td><td>Go up one folder</td><td><code>cd ..</code></td></tr>
+  <tr><td><code>cd ~</code></td><td>Go to your home folder</td><td><code>cd ~</code></td></tr>
+  <tr><td><code>ls</code></td><td>List files in current folder</td><td><code>ls</code></td></tr>
+  <tr><td><code>ls -la</code></td><td>List all files with details (size, dates, hidden)</td><td><code>ls -la</code></td></tr>
+  <tr><td><code>mkdir NAME</code></td><td>Make directory — create folder</td><td><code>mkdir assets</code></td></tr>
+  <tr><td><code>cp A B</code></td><td>Copy file or folder</td><td><code>cp index.html backup.html</code></td></tr>
+  <tr><td><code>mv A B</code></td><td>Move or rename</td><td><code>mv old.html new.html</code></td></tr>
+  <tr><td><code>rm FILE</code></td><td>Remove file (no Trash — be careful)</td><td><code>rm temp.txt</code></td></tr>
+  <tr><td><code>open .</code></td><td>Open current folder in Finder</td><td><code>open .</code></td></tr>
+  <tr><td><code>open FILE</code></td><td>Open file with default app</td><td><code>open index.html</code></td></tr>
+</table>
+<p><code>~</code> = home folder · <code>..</code> = parent folder · <code>./file</code> = file in current folder</p>
+
+<h2>Read &amp; search files</h2>
+<table>
+  <tr><th>Command</th><th>What it does</th><th>Example</th></tr>
+  <tr><td><code>cat FILE</code></td><td>Print whole file</td><td><code>cat readme.txt</code></td></tr>
+  <tr><td><code>head -n 20 FILE</code></td><td>First 20 lines</td><td><code>head -n 20 index.html</code></td></tr>
+  <tr><td><code>tail -n 20 FILE</code></td><td>Last 20 lines</td><td><code>tail -n 20 server.log</code></td></tr>
+  <tr><td><code>less FILE</code></td><td>Scroll through file (q to quit)</td><td><code>less style.css</code></td></tr>
+  <tr><td><code>grep "text" FILE</code></td><td>Search for text in a file</td><td><code>grep "Thuldai" index.html</code></td></tr>
+  <tr><td><code>grep -r "text" .</code></td><td>Search in all files under current folder</td><td><code>grep -r "localhost" .</code></td></tr>
+  <tr><td><code>find . -name "*.html"</code></td><td>Find files by name</td><td><code>find . -name "*.html"</code></td></tr>
+</table>
+
+<h2>Local website (preview your site)</h2>
+<table>
+  <tr><th>Command</th><th>What it does</th><th>Example</th></tr>
+  <tr><td><code>python3 -m http.server PORT</code></td><td>Start a simple web server in current folder</td><td><code>python3 -m http.server 8081</code></td></tr>
+  <tr><td><code>curl URL</code></td><td>Test a URL from Terminal</td><td><code>curl http://localhost:8081/index.html</code></td></tr>
+  <tr><td><code>curl -I URL</code></td><td>Show headers only (check if server responds)</td><td><code>curl -I http://localhost:8081/</code></td></tr>
+</table>
+<p>Same Mac: <code>http://localhost:8081/index.html</code> · Phone (same Wi‑Fi): <code>http://YOUR_IP:8081/index.html</code></p>
+
+<h2>Network &amp; IP</h2>
+<table>
+  <tr><th>Command</th><th>What it does</th><th>Example</th></tr>
+  <tr><td><code>ipconfig getifaddr en0</code></td><td>Your Mac’s Wi‑Fi IP (for phone testing)</td><td><code>ipconfig getifaddr en0</code></td></tr>
+  <tr><td><code>ifconfig</code></td><td>All network interfaces &amp; IPs</td><td><code>ifconfig | grep "inet "</code></td></tr>
+  <tr><td><code>ping HOST</code></td><td>Test if something is reachable</td><td><code>ping google.com</code></td></tr>
+  <tr><td><code>ping -c 4 HOST</code></td><td>Ping 4 times then stop</td><td><code>ping -c 4 192.168.1.1</code></td></tr>
+</table>
+<p><code>en0</code> = usually Wi‑Fi · <code>en1</code> = sometimes Ethernet</p>
+
+<h2>Ports &amp; processes</h2>
+<table>
+  <tr><th>Command</th><th>What it does</th><th>Example</th></tr>
+  <tr><td><code>lsof -nP -iTCP:8081 -sTCP:LISTEN</code></td><td>Is anything listening on port 8081?</td><td><code>lsof -nP -iTCP:8081 -sTCP:LISTEN</code></td></tr>
+  <tr><td><code>kill PID</code></td><td>Stop a process by ID</td><td><code>kill 12345</code></td></tr>
+  <tr><td><code>kill -9 PID</code></td><td>Force stop a process</td><td><code>kill -9 12345</code></td></tr>
+  <tr><td><code>ps aux | grep python</code></td><td>Find Python processes</td><td><code>ps aux | grep python</code></td></tr>
+</table>
+
+<h2>Permissions &amp; scripts</h2>
+<table>
+  <tr><th>Command</th><th>What it does</th><th>Example</th></tr>
+  <tr><td><code>chmod +x FILE</code></td><td>Make file executable</td><td><code>chmod +x start-local-server.command</code></td></tr>
+  <tr><td><code>./script.sh</code></td><td>Run a script in current folder</td><td><code>./start-local-server.command</code></td></tr>
+</table>
+
+<h2>Python</h2>
+<table>
+  <tr><th>Command</th><th>What it does</th><th>Example</th></tr>
+  <tr><td><code>python3 --version</code></td><td>Check Python version</td><td><code>python3 --version</code></td></tr>
+  <tr><td><code>pip3 install PACKAGE</code></td><td>Install a Python library</td><td><code>pip3 install pymupdf</code></td></tr>
+  <tr><td><code>python3 script.py</code></td><td>Run a Python file</td><td><code>python3 build_complete_book.py</code></td></tr>
+</table>
+
+<h2>Git (save &amp; share code)</h2>
+<table>
+  <tr><th>Command</th><th>What it does</th><th>Example</th></tr>
+  <tr><td><code>git status</code></td><td>What changed?</td><td><code>git status</code></td></tr>
+  <tr><td><code>git add .</code></td><td>Stage all changes</td><td><code>git add .</code></td></tr>
+  <tr><td><code>git commit -m "msg"</code></td><td>Save a snapshot</td><td><code>git commit -m "Update logo"</code></td></tr>
+  <tr><td><code>git push</code></td><td>Upload to remote (GitHub etc.)</td><td><code>git push</code></td></tr>
+  <tr><td><code>git pull</code></td><td>Download latest from remote</td><td><code>git pull</code></td></tr>
+  <tr><td><code>git log --oneline -5</code></td><td>Last 5 commits</td><td><code>git log --oneline -5</code></td></tr>
+</table>
+
+<h2>Useful syntax symbols</h2>
+<table>
+  <tr><th>Symbol</th><th>Meaning</th><th>Example</th></tr>
+  <tr><td><code>|</code> (pipe)</td><td>Send output into another command</td><td><code>ls | grep html</code></td></tr>
+  <tr><td><code>&gt;</code></td><td>Save output to file (overwrite)</td><td><code>ls &gt; files.txt</code></td></tr>
+  <tr><td><code>&gt;&gt;</code></td><td>Append output to file</td><td><code>echo hello &gt;&gt; log.txt</code></td></tr>
+  <tr><td><code>&amp;&amp;</code></td><td>Run 2nd command only if 1st succeeds</td><td><code>cd website &amp;&amp; python3 -m http.server 8081</code></td></tr>
+  <tr><td><code>;</code></td><td>Run commands one after another</td><td><code>cd website; ls</code></td></tr>
+  <tr><td><code>#</code></td><td>Comment (ignored)</td><td><code># this is a note</code></td></tr>
+  <tr><td><code>Ctrl+C</code></td><td>Stop running command (e.g. stop server)</td><td>while server is running</td></tr>
+  <tr><td><code>Ctrl+L</code></td><td>Clear screen</td><td></td></tr>
+  <tr><td><code>↑ / ↓</code></td><td>Previous / next command in history</td><td></td></tr>
+</table>
+
+<h2>Paths on Mac</h2>
+<table>
+  <tr><th>Form</th><th>Meaning</th></tr>
+  <tr><td><code>/Users/shishirchandrapoudel/...</code></td><td>Full path from root</td></tr>
+  <tr><td><code>~/Projects/...</code></td><td>Shortcut to your home folder</td></tr>
+  <tr><td><code>./file</code></td><td>File in current directory</td></tr>
+  <tr><td><code>../file</code></td><td>File in parent directory</td></tr>
+</table>
+<p>Use quotes for paths with spaces: <code>cd "/Users/.../NEPAL-AUSTRALIA/website"</code></p>
+
+<div class="daily">
+  <h2>Your daily 5 — Thuldai website</h2>
+  <pre>cd "/Users/shishirchandrapoudel/Projects/NEPAL-AUSTRALIA/website"
+python3 -m http.server 8081
+lsof -nP -iTCP:8081 -sTCP:LISTEN
+ipconfig getifaddr en0
+open http://localhost:8081/index.html</pre>
+</div>
+
+<p class="footer">Thuldai · Guide for Australia · Terminal reference for Mac</p>
+
+</body>
+</html>

@@ -1,0 +1,836 @@
+/* Australia guide page — bright hero + minimal Start Here */
+
+/* ── Bright hero — vibrant photo, minimal wash ── */
+.page-australia .aus-hero {
+  min-height: 70vh;
+  align-items: center;
+  padding: calc(var(--header-h) + 2.5rem) 0 3.5rem;
+}
+
+.page-australia .aus-hero-media img {
+  object-position: center 35%;
+  filter: saturate(1.28) contrast(1.06);
+  animation: none;
+}
+
+.page-australia .aus-hero-overlay {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.12) 0%, transparent 28%);
+}
+
+.page-australia .aus-hero-body .page-brand-logo,
+.contact-hero .page-brand-logo,
+.js-register-header .page-brand-logo {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.page-australia .aus-hero-body {
+  max-width: 520px;
+  color: var(--sa-black);
+  padding: 2rem 2.25rem;
+  background: rgba(255, 255, 255, 0.94);
+  border-radius: 20px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.page-australia .aus-hero-label {
+  background: var(--sa-red-soft);
+  color: var(--sa-red-dark);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+}
+
+.page-australia .aus-hero-title {
+  font-family: var(--font-body);
+  color: var(--sa-black);
+  text-shadow: none;
+}
+
+.page-australia .aus-hero-lead {
+  color: var(--sa-gray);
+}
+
+.page-australia .aus-hero-lead strong {
+  color: var(--sa-black);
+}
+
+.page-australia .aus-hero-btn--primary {
+  box-shadow: 0 8px 24px rgba(239, 68, 68, 0.28);
+}
+
+.page-australia .aus-hero-btn--ghost {
+  background: #fff;
+  color: var(--sa-black);
+  border: 1.5px solid var(--sa-border);
+}
+
+.page-australia .aus-hero-btn--ghost:hover {
+  border-color: var(--sa-red);
+  color: var(--sa-red);
+  background: #fff;
+}
+
+/* ── Minimal topics list (replaces Start Here + Practical Guide) ── */
+.aus-topics {
+  padding: 4rem 0;
+  background: #fafafa;
+}
+
+.aus-topics-list {
+  max-width: 720px;
+  margin: 0 auto;
+  border: 1px solid #eceef2;
+  border-radius: 16px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.aus-topic-row {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  padding: 1.25rem 1.35rem;
+  border-bottom: 1px solid #eceef2;
+}
+
+.aus-topic-row:last-child {
+  border-bottom: none;
+}
+
+.aus-topic-row--link {
+  text-decoration: none;
+  color: inherit;
+  align-items: center;
+  transition: background 0.2s ease;
+}
+
+.aus-topic-row--link:hover {
+  background: var(--sa-red-soft);
+}
+
+.aus-topic-label {
+  flex-shrink: 0;
+  width: 4.5rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--sa-red);
+  padding-top: 0.15rem;
+}
+
+.aus-topic-content h3 {
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--sa-black);
+  margin: 0 0 0.35rem;
+  line-height: 1.35;
+}
+
+.aus-topic-content p {
+  font-size: 0.88rem;
+  color: var(--sa-gray);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.aus-topic-arrow {
+  margin-left: auto;
+  flex-shrink: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--sa-red);
+}
+
+@media (max-width: 520px) {
+  .aus-topic-row {
+    flex-direction: column;
+    gap: 0.35rem;
+    padding: 1.1rem 1.15rem;
+  }
+
+  .aus-topic-label {
+    width: auto;
+    padding-top: 0;
+  }
+
+  .aus-topic-row--link {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+/* ── Start Here — minimal cards (legacy, unused) ── */
+.aus-start {
+  padding: 4rem 0 4.5rem;
+  background: #fafafa;
+}
+
+/* ── Shared section header ── */
+.aus-section-head,
+.aus-features-head,
+.aus-start-head {
+  text-align: center;
+  max-width: 560px;
+  margin: 0 auto 2.5rem;
+}
+
+.aus-section-head .section-label,
+.aus-features-head .section-label,
+.aus-start-head .section-label {
+  margin-bottom: 0.5rem;
+}
+
+.aus-section-head h2,
+.aus-features-head h2,
+.aus-start-head h2 {
+  font-family: var(--font-body);
+  font-size: clamp(1.5rem, 3vw, 1.85rem);
+  font-weight: 700;
+  color: var(--sa-black);
+  margin: 0 0 0.65rem;
+  line-height: 1.25;
+}
+
+.aus-section-head p,
+.aus-features-head p,
+.aus-start-head p {
+  font-size: 0.95rem;
+  color: var(--sa-gray);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ── Practical guide ── */
+.aus-guide {
+  padding: 4rem 0 4.5rem;
+  background: #fff;
+}
+
+.aus-guide-card {
+  display: grid;
+  grid-template-columns: minmax(200px, 280px) 1fr;
+  gap: 2rem;
+  align-items: center;
+  max-width: 920px;
+  margin: 0 auto 1.25rem;
+  padding: 1.25rem;
+  background: #fff;
+  border: 1px solid #eceef2;
+  border-radius: 16px;
+}
+
+.aus-guide-card:last-child {
+  margin-bottom: 0;
+}
+
+.aus-guide-img {
+  border-radius: 12px;
+  overflow: hidden;
+  background: #f3f4f6;
+}
+
+.aus-guide-img img {
+  width: 100%;
+  height: 168px;
+  object-fit: cover;
+  display: block;
+}
+
+.aus-guide-tag {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--sa-red);
+  margin-bottom: 0.35rem;
+}
+
+.aus-guide-body h3 {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--sa-black);
+  margin: 0 0 0.5rem;
+  line-height: 1.3;
+}
+
+.aus-guide-body p {
+  font-size: 0.9rem;
+  color: var(--sa-gray);
+  line-height: 1.65;
+  margin: 0;
+}
+
+.aus-guide-body a {
+  color: var(--sa-red);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.aus-guide-body a:hover {
+  color: var(--sa-red-dark);
+}
+
+.aus-start-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.aus-start-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid #eceef2;
+  border-radius: 16px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.aus-start-card:hover {
+  border-color: var(--sa-red);
+  box-shadow: 0 10px 32px rgba(239, 68, 68, 0.1);
+  transform: translateY(-3px);
+}
+
+.aus-start-card-img {
+  height: 120px;
+  overflow: hidden;
+  background: #f0f1f4;
+}
+
+.aus-start-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.aus-start-card:hover .aus-start-card-img img {
+  transform: scale(1.04);
+}
+
+.aus-start-card-body {
+  padding: 1.1rem 1.15rem 1.25rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.aus-start-card-tag {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--sa-red);
+  margin-bottom: 0.35rem;
+}
+
+.aus-start-card h3 {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--sa-black);
+  margin: 0 0 0.4rem;
+  line-height: 1.35;
+}
+
+.aus-start-card p {
+  font-size: 0.82rem;
+  color: var(--sa-gray);
+  line-height: 1.55;
+  margin: 0;
+  flex: 1;
+}
+
+.aus-start-card-arrow {
+  display: inline-block;
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--sa-red);
+}
+
+/* ── Main features — minimal photo grid ── */
+.aus-features {
+  padding: 4rem 0 4.5rem;
+  background: #fafafa;
+}
+
+.aus-features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.aus-feature-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid #eceef2;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.aus-feature-img {
+  height: 132px;
+  overflow: hidden;
+  background: #f3f4f6;
+}
+
+.aus-feature-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.aus-feature-body {
+  padding: 1.1rem 1.15rem 1.2rem;
+}
+
+.aus-feature-body h3 {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--sa-black);
+  margin: 0 0 0.4rem;
+  line-height: 1.35;
+}
+
+.aus-feature-body p {
+  font-size: 0.82rem;
+  color: var(--sa-gray);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* Last row: centre single card when 7 items */
+.aus-feature-card:last-child:nth-child(3n + 1) {
+  grid-column: 2;
+}
+
+@media (max-width: 900px) {
+  .aus-features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .aus-feature-card:last-child:nth-child(3n + 1) {
+    grid-column: auto;
+  }
+
+  .aus-feature-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    max-width: 420px;
+    margin: 0 auto;
+    width: 100%;
+  }
+}
+
+@media (max-width: 520px) {
+  .aus-features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .aus-feature-card:last-child:nth-child(odd) {
+    grid-column: auto;
+    max-width: none;
+  }
+
+  .aus-feature-img {
+    height: 148px;
+  }
+}
+
+@media (max-width: 900px) {
+  .aus-start-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .page-australia .aus-hero {
+    min-height: 62vh;
+    align-items: flex-end;
+    padding-bottom: 2.5rem;
+  }
+
+  .page-australia .aus-hero-body {
+    padding: 1.5rem 1.35rem;
+    border-radius: 16px;
+  }
+}
+
+@media (max-width: 520px) {
+  .aus-start-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .aus-start-card-img {
+    height: 140px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aus-start-card,
+  .aus-start-card-img img {
+    transition: none;
+  }
+}
+
+/* ── City guides + team contacts ── */
+.city-guide {
+  font-size: 0.88rem;
+  color: var(--sa-gray);
+  margin: 0.5rem 0 0.75rem;
+  line-height: 1.5;
+}
+
+.city-guide a {
+  font-weight: 600;
+  color: var(--sa-red);
+  text-decoration: none;
+}
+
+.city-guide a:hover {
+  color: var(--sa-red-dark);
+}
+
+.aus-team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.aus-team-card {
+  background: #fff;
+  border: 1px solid var(--sa-border);
+  border-radius: 16px;
+  padding: 1.35rem 1.25rem;
+  text-align: center;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.aus-team-card:hover {
+  border-color: var(--sa-red);
+  box-shadow: 0 10px 32px rgba(239, 68, 68, 0.1);
+  transform: translateY(-3px);
+}
+
+.aus-team-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 0.75rem;
+  font-size: 1.75rem;
+  background: var(--sa-red-soft);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 50%;
+  line-height: 1;
+}
+
+.aus-team-card h3 {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--sa-black);
+  margin: 0 0 0.25rem;
+}
+
+.aus-team-city {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--sa-red);
+  margin: 0 0 0.5rem;
+}
+
+.aus-team-role {
+  font-size: 0.82rem;
+  color: var(--sa-gray);
+  line-height: 1.55;
+  margin: 0 0 0.75rem;
+}
+
+.aus-team-phone {
+  display: inline-block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--sa-black);
+  text-decoration: none;
+}
+
+.aus-team-phone:hover {
+  color: var(--sa-red);
+}
+
+@media (max-width: 900px) {
+  .aus-team-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .aus-guides .aus-team-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .aus-team-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Cities grid ── */
+.aus-cities {
+  padding: 4rem 0 4.5rem;
+  background: #fff;
+}
+
+.aus-cities-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.aus-city-card {
+  background: #fff;
+  border: 1px solid #eceef2;
+  border-radius: 14px;
+  overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.aus-city-card:hover {
+  border-color: var(--sa-red);
+  box-shadow: 0 10px 32px rgba(239, 68, 68, 0.08);
+  transform: translateY(-3px);
+}
+
+.aus-city-img {
+  height: 140px;
+  background-size: cover;
+  background-position: center;
+}
+
+.aus-city-body {
+  padding: 1.1rem 1.15rem 1.2rem;
+}
+
+.aus-city-body h3 {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--sa-black);
+  margin: 0 0 0.35rem;
+}
+
+.aus-city-body p {
+  font-size: 0.82rem;
+  color: var(--sa-gray);
+  line-height: 1.55;
+  margin: 0 0 0.65rem;
+}
+
+.aus-city-body a {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--sa-red);
+  text-decoration: none;
+}
+
+.aus-city-body a:hover {
+  color: var(--sa-red-dark);
+}
+
+/* ── Guides ── */
+.aus-guides {
+  padding: 4rem 0 4.5rem;
+  background: #fff;
+}
+
+.aus-guides .aus-team-grid {
+  max-width: 1040px;
+  margin: 0 auto;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+/* ── Curiosities / facts ── */
+.aus-facts {
+  padding: 4rem 0 4.5rem;
+  background: #fff;
+}
+
+.aus-facts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.aus-fact-card {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1.15rem 1.2rem;
+  background: #fff;
+  border: 1px solid #eceef2;
+  border-radius: 12px;
+}
+
+.aus-fact-num {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--sa-red-dark);
+  background: var(--sa-red-soft);
+  border-radius: 8px;
+  letter-spacing: 0.02em;
+}
+
+.aus-fact-card h3 {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--sa-black);
+  margin: 0 0 0.3rem;
+  line-height: 1.35;
+}
+
+.aus-fact-card p {
+  font-size: 0.82rem;
+  color: var(--sa-gray);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ── Bottom CTA ── */
+.aus-page-cta {
+  padding: 4rem 0 5rem;
+  background: var(--sa-red);
+  color: #fff;
+}
+
+.aus-page-cta-inner {
+  max-width: 560px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.aus-page-cta-inner h2 {
+  font-family: var(--font-body);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 0.75rem;
+  line-height: 1.25;
+}
+
+.aus-page-cta-inner > p {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.65;
+  margin: 0 0 1.75rem;
+}
+
+.aus-page-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+.aus-page-cta .aus-hero-btn--primary {
+  background: #fff;
+  color: var(--sa-red-dark);
+  border-color: #fff;
+}
+
+.aus-page-cta .aus-hero-btn--primary:hover {
+  background: var(--sa-black);
+  color: #fff;
+  border-color: var(--sa-black);
+}
+
+.aus-page-cta .aus-hero-btn--ghost {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
+.aus-page-cta .aus-hero-btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  border-color: #fff;
+}
+
+.aus-page-cta-email {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.aus-page-cta-email a {
+  color: rgba(255, 255, 255, 0.92);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.aus-page-cta-email a:hover {
+  color: #fff;
+}
+
+@media (max-width: 900px) {
+  .aus-guide-card {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .aus-cities-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .aus-facts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .aus-cities-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .aus-guides .aus-team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .aus-guide-img img {
+    height: 180px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aus-city-card,
+  .aus-team-card {
+    transition: none;
+  }
+}

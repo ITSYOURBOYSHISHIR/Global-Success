@@ -1,0 +1,70 @@
+/* Skills Australia — red · black · white design tokens */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Core palette */
+  --sa-red: #EF4444;
+  --sa-red-dark: #DC2626;
+  --sa-red-hover: #DC2626;
+  --sa-red-pale: #FEE2E2;
+  --sa-red-soft: #FEF2F2;
+  --sa-black: #1A1A1A;
+  --sa-gray: #6B7280;
+  --sa-gray-muted: #9CA3AF;
+  --sa-bg: #FEF8F7;
+  --sa-bg-alt: #F5F5F5;
+  --sa-white: #FFFFFF;
+  --sa-border: #E5E7EB;
+
+  /* Legacy aliases — existing CSS keeps working */
+  --ding-teal: var(--sa-red);
+  --ding-orange: var(--sa-red);
+  --ding-orange-brown: var(--sa-gray);
+  --ding-teal-light: var(--sa-red-pale);
+  --ding-teal-pale: var(--sa-red-soft);
+  --ding-dark: var(--sa-black);
+  --ding-gray-bg: var(--sa-bg);
+  --ding-white: var(--sa-white);
+  --ding-shadow: rgba(0, 0, 0, 0.08);
+
+  /* Typography */
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-display: 'Inter', system-ui, sans-serif;
+
+  /* Motion */
+  --ease-dingoos: cubic-bezier(0, 0, 0.35, 1);
+  --t-fast: 0.2s;
+  --t-medium: 0.4s;
+
+  /* Layout */
+  --header-h: 103px;
+  --radius-sm: 12px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+}
+
+*, *::before, *::after {
+  transition-timing-function: var(--ease-dingoos);
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--sa-black);
+  background: var(--sa-bg);
+  font-size: 16px;
+  line-height: 25px;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, .titulo, .bloque-titular h2, .dingoos-titulo {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-style: normal;
+  color: var(--sa-black);
+}
+
+a {
+  color: var(--sa-red);
+  transition: color var(--t-fast) var(--ease-dingoos);
+}
+a:hover { color: var(--sa-red-dark); }

@@ -1,0 +1,447 @@
+/* Tiered settlement packages — home + enrol */
+
+/* ── Section header ── */
+.packages-section-head {
+  text-align: center;
+  max-width: 42rem;
+  margin: 0 auto 2.5rem;
+}
+
+.home-packages-flow .section-label {
+  margin-bottom: 0.5rem;
+}
+
+.home-packages-flow .packages-main-title {
+  font-size: clamp(1.75rem, 3.5vw, 2.35rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin-bottom: 0.65rem;
+  color: var(--sa-black);
+}
+
+.home-packages-flow .packages-intro {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--sa-gray);
+  margin: 0 auto;
+  max-width: 36rem;
+}
+
+.packages-section-foot {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.tier-section-cta {
+  text-align: center;
+  margin-top: 1.25rem;
+}
+
+/* ── Package grid ── */
+.tier-packages-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.15rem;
+  align-items: stretch;
+}
+
+.tier-package-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid var(--sa-border);
+  border-radius: 16px;
+  overflow: hidden;
+  text-align: left;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.tier-package-card:hover {
+  border-color: rgba(239, 68, 68, 0.4);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+  transform: translateY(-3px);
+}
+
+.tier-package-card.is-featured {
+  border-color: var(--sa-red);
+  box-shadow: 0 0 0 2px var(--sa-red), 0 16px 40px rgba(239, 68, 68, 0.12);
+}
+
+/* ── Card header ── */
+.tier-package-head {
+  padding: 1.15rem 1.15rem 1rem;
+  background: linear-gradient(145deg, #141419 0%, #252530 100%);
+  color: #fff;
+}
+
+.tier-package-card.is-featured .tier-package-head {
+  background: linear-gradient(145deg, var(--sa-red) 0%, #b91c1c 100%);
+}
+
+.tier-package-num {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+  margin-bottom: 0.35rem;
+}
+
+.tier-package-name {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin: 0 0 0.35rem;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+
+.tier-package-tagline {
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.78);
+  margin: 0;
+}
+
+.tier-package-badge {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.85rem;
+  padding: 0.25rem 0.55rem;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--sa-red-dark);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  z-index: 1;
+}
+
+/* ── Stats strip ── */
+.tier-package-stats {
+  display: flex;
+  gap: 0.65rem;
+  padding: 0.85rem 1.15rem;
+  background: #fef2f2;
+  border-bottom: 1px solid #fee2e2;
+}
+
+.tier-package-card.is-featured .tier-package-stats {
+  background: var(--sa-red-soft);
+  border-bottom-color: rgba(239, 68, 68, 0.15);
+}
+
+.tier-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.tier-stat strong {
+  font-size: 1.15rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--sa-red-dark);
+  letter-spacing: -0.02em;
+}
+
+.tier-stat span {
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--sa-gray);
+}
+
+/* ── Features body — stand out ── */
+.tier-package-body {
+  flex: 1;
+  padding: 1rem 1.15rem 0.85rem;
+  background: #fafafa;
+}
+
+.tier-package-features-label {
+  margin: 0 0 0.65rem;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--sa-black);
+}
+
+.tier-package-features {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.tier-package-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  padding: 0.45rem 0.55rem;
+  border-radius: 8px;
+  background: #fff;
+  border: 1px solid #eee;
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--sa-black);
+}
+
+.tier-package-feature.is-includes {
+  background: #fff5f5;
+  border-color: rgba(239, 68, 68, 0.2);
+  color: var(--sa-red-dark);
+}
+
+.tier-feature-check {
+  flex-shrink: 0;
+  width: 1.1rem;
+  height: 1.1rem;
+  margin-top: 0.1rem;
+  border-radius: 50%;
+  background: var(--sa-red);
+  position: relative;
+}
+
+.tier-feature-check::after {
+  content: "";
+  position: absolute;
+  left: 0.38rem;
+  top: 0.18rem;
+  width: 0.22rem;
+  height: 0.45rem;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.tier-package-feature.is-includes .tier-feature-check {
+  background: var(--sa-black);
+}
+
+/* Legacy list item selectors (enrol page) */
+.tier-package-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  padding: 0.45rem 0.55rem;
+  border-radius: 8px;
+  background: #fff;
+  border: 1px solid #eee;
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--sa-black);
+}
+
+.tier-package-features li.is-includes {
+  background: #fff5f5;
+  border-color: rgba(239, 68, 68, 0.2);
+  color: var(--sa-red-dark);
+}
+
+.tier-package-features li::before {
+  display: none;
+}
+
+/* ── Card footer ── */
+.tier-package-foot {
+  padding: 0.85rem 1.15rem 1.15rem;
+  margin-top: auto;
+  background: #fff;
+  border-top: 1px solid var(--sa-border);
+}
+
+.tier-package-foot .js-btn,
+.tier-package-foot .tier-select-btn {
+  width: 100%;
+  justify-content: center;
+  font-size: 0.88rem;
+  padding: 0.75rem 1rem;
+}
+
+/* Legacy header row (enrol) */
+.tier-package-head-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.2rem;
+}
+
+.tier-package-head-row .tier-package-num {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.35rem;
+  height: 1.35rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  font-size: 0.72rem;
+  margin-bottom: 0;
+}
+
+.tier-package-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  padding: 0.65rem 1rem 0;
+}
+
+.tier-package-meta span {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.45rem;
+  border-radius: 999px;
+  background: var(--sa-red-soft);
+  color: var(--sa-red-dark);
+  font-size: 0.68rem;
+  font-weight: 600;
+}
+
+/* ── Enrol — selectable tier cards ── */
+.tier-packages-grid--enrol {
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.tier-package-card--select {
+  cursor: pointer;
+  border-width: 2px;
+  padding: 0;
+  font-family: inherit;
+  appearance: none;
+  width: 100%;
+  text-align: left;
+}
+
+.tier-package-card--select:hover {
+  transform: none;
+}
+
+.tier-package-card--select.selected {
+  border-color: var(--sa-red);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
+}
+
+.tier-package-card--select .tier-package-check {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.85rem;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.12);
+  opacity: 0;
+  transition: opacity 0.2s ease, background 0.2s ease;
+  z-index: 2;
+}
+
+.tier-package-card--select.selected .tier-package-check {
+  opacity: 1;
+  background: var(--sa-red);
+  border-color: var(--sa-red);
+}
+
+.tier-package-card--select.selected .tier-package-check::after {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 4px;
+  width: 5px;
+  height: 10px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.tier-package-card--select.is-featured.selected .tier-package-check {
+  top: 2.35rem;
+}
+
+/* WhatsApp success block */
+.enrol-whatsapp-success {
+  display: none;
+  margin-top: 1.25rem;
+  padding: 1.15rem;
+  border-radius: 14px;
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  text-align: center;
+}
+
+.enrol-whatsapp-success.show {
+  display: block;
+}
+
+.enrol-whatsapp-success p {
+  margin: 0 0 0.85rem;
+  font-size: 0.9rem;
+  color: #065f46;
+  line-height: 1.5;
+}
+
+.enrol-whatsapp-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.35rem;
+  border-radius: 999px;
+  background: #25d366;
+  color: #fff !important;
+  font-weight: 700;
+  font-size: 0.92rem;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.enrol-whatsapp-btn:hover {
+  background: #1da851;
+  color: #fff !important;
+  transform: translateY(-1px);
+}
+
+.whatsapp-field-note {
+  font-size: 0.78rem;
+  color: var(--sa-gray);
+  margin-top: 0.35rem;
+  line-height: 1.45;
+}
+
+@media (max-width: 1100px) {
+  .tier-packages-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .tier-packages-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tier-package-card:hover {
+    transform: none;
+  }
+
+  .home-packages-flow .packages-main-title {
+    font-size: 1.55rem;
+  }
+
+  .tier-package-feature,
+  .tier-package-features li {
+    font-size: 0.8rem;
+  }
+}

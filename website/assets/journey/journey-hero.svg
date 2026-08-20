@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 220" fill="none" role="img" aria-label="Your journey from Nepal to Australia">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="800" y2="220" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FEF2F2"/>
+      <stop offset="1" stop-color="#FEF8F7"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="220" fill="url(#sky)" rx="16"/>
+  <!-- Flight path -->
+  <path d="M120 140 Q400 40 680 120" stroke="#EF4444" stroke-width="3" stroke-dasharray="10 8" fill="none" opacity="0.5"/>
+  <!-- Nepal mountains -->
+  <path d="M40 160 L90 90 L130 130 L170 70 L220 160 Z" fill="#EF4444" opacity="0.2"/>
+  <text x="95" y="185" font-family="Georgia, serif" font-size="14" font-weight="700" fill="#1A1A1A">Nepal</text>
+  <!-- Plane -->
+  <g transform="translate(370, 75) rotate(-8)">
+    <ellipse cx="30" cy="18" rx="32" ry="10" fill="#fff" stroke="#1A1A1A" stroke-width="2"/>
+    <path d="M8 18 L-12 8 L-12 28 Z" fill="#EF4444"/>
+    <path d="M52 18 L72 10 L72 26 Z" fill="#EF4444"/>
+  </g>
+  <!-- Australia -->
+  <circle cx="680" cy="130" r="48" fill="#EF4444" opacity="0.12"/>
+  <path d="M650 145 L670 115 L690 135 L710 105 L730 145 Z" fill="#EF4444" opacity="0.35"/>
+  <text x="655" y="185" font-family="Georgia, serif" font-size="14" font-weight="700" fill="#1A1A1A">Australia</text>
+  <!-- Step dots -->
+  <circle cx="120" cy="140" r="8" fill="#EF4444"/>
+  <circle cx="280" cy="85" r="6" fill="#1A1A1A" opacity="0.3"/>
+  <circle cx="400" cy="62" r="6" fill="#1A1A1A" opacity="0.3"/>
+  <circle cx="520" cy="85" r="6" fill="#1A1A1A" opacity="0.3"/>
+  <circle cx="680" cy="120" r="8" fill="#EF4444"/>
+</svg>

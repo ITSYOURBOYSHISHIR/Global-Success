@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 380" fill="none" role="img" aria-label="Contact Global Success from Nepal">
+  <rect width="420" height="380" rx="24" fill="#FEF2F2"/>
+  <ellipse cx="210" cy="340" rx="160" ry="18" fill="#FEE2E2"/>
+  <!-- Mountains Nepal -->
+  <path d="M40 280 L110 180 L160 240 L220 120 L280 220 L340 160 L380 280 Z" fill="#DC2626" opacity="0.15"/>
+  <path d="M80 280 L140 200 L190 250 L250 150 L310 230 L360 190 L380 280 Z" fill="#EF4444" opacity="0.25"/>
+  <!-- Envelope -->
+  <rect x="95" y="130" width="230" height="150" rx="16" fill="#fff" stroke="#1A1A1A" stroke-width="3"/>
+  <path d="M95 145 L210 230 L325 145" stroke="#EF4444" stroke-width="4" fill="none" stroke-linejoin="round"/>
+  <circle cx="320" cy="110" r="36" fill="#EF4444"/>
+  <path d="M308 110 L318 120 L334 98" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Grad cap -->
+  <path d="M155 95 L210 70 L265 95 L210 118 Z" fill="#1A1A1A"/>
+  <rect x="200" y="95" width="20" height="28" fill="#1A1A1A"/>
+  <circle cx="268" cy="88" r="5" fill="#EF4444"/>
+  <path d="M268 88 L268 105" stroke="#EF4444" stroke-width="2"/>
+  <!-- Person -->
+  <circle cx="72" cy="248" r="22" fill="#FBBF24"/>
+  <path d="M50 280 Q72 258 94 280 L94 310 L50 310 Z" fill="#EF4444"/>
+  <rect x="58" y="268" width="28" height="20" rx="4" fill="#1A1A1A" opacity="0.8"/>
+</svg>
