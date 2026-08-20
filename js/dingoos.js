@@ -43,22 +43,7 @@ function initDingoosHeader() {
     }
   }, { passive: true });
 
-  const toggle = document.querySelector('.menu-toggle');
-  const links = document.querySelector('.nav-links');
-  if (toggle && links) {
-    toggle.addEventListener('click', () => {
-      links.classList.toggle('open');
-      toggle.classList.toggle('open');
-      document.body.classList.toggle('menu-open');
-    });
-    links.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        links.classList.remove('open');
-        toggle.classList.remove('open');
-        document.body.classList.remove('menu-open');
-      });
-    });
-  }
+  /* Nav menu handled by mobile-ui.js on ≤900px screens */
 }
 
 /* Smooth scroll — Dingoos uses 1000ms jQuery animate */
@@ -71,7 +56,8 @@ function initSmoothScroll() {
       if (!target) return;
       e.preventDefault();
       const start = window.scrollY;
-      const end = target.getBoundingClientRect().top + window.scrollY - 90;
+      const headerH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h'), 10) || 103;
+      const end = target.getBoundingClientRect().top + window.scrollY - headerH - 8;
       const duration = 1000;
       const startTime = performance.now();
 

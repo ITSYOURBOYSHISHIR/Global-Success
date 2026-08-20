@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Global Success | Nepal to Australia Student Settlement and Life-Skills Packages</title>
-  <meta name="description" content="Modular guidance packages for Nepali students moving to Australia. Enrol in Nepal, arrive prepared. Free SIM and activation help, airport pickup, transport card top-up, practice quizzes, and 10 specialist packages.">
+  <title>Thuldai | Guide for Australia — Student Settlement Packages</title>
+  <meta name="description" content="Thuldai — Guide for Australia. Four tiered settlement packages for Nepali students. Airport pickup, SIM, housing guidance, and WhatsApp support.">
+  <link rel="icon" type="image/png" href="assets/favicon.png?v=1">
+  <link rel="apple-touch-icon" href="assets/thuldai-logo.png?v=1">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="css/style.css">
@@ -13,6 +15,9 @@
   <link rel="stylesheet" href="css/journey-dingoos.css">
   <link rel="stylesheet" href="css/hero-interactive.css">
   <link rel="stylesheet" href="css/home-flow.css">
+  <link rel="stylesheet" href="css/packages-tiers.css?v=20260832">
+  <link rel="stylesheet" href="css/mobile.css?v=20260827">
+  <link rel="stylesheet" href="css/whatsapp-float.css?v=20260830">
 </head>
 <body>
 
@@ -21,8 +26,8 @@
   <nav class="navbar dingoos-header" id="navbar">
     <div class="container nav-inner">
       <a href="index.html" class="logo">
-        <img src="assets/global-success-logo.svg?v=3" alt="">
-        <span class="logo-word"><strong>Global</strong> <em>Success</em></span>
+        <img src="assets/thuldai-logo.png?v=1" alt="Thuldai — Guide for Australia" width="52" height="52">
+        <span class="logo-word"><strong>Thuldai</strong> <em class="logo-tag">Guide for Australia</em></span>
       </a>
       <button class="menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
       <ul class="nav-links" id="navLinks">
@@ -45,13 +50,16 @@
 
     <div class="container hero-v2-grid">
       <div class="hero-v2-copy">
-        <p class="hero-v2-eyebrow hero-anim" style="--d:0">Nepal → Australia · Your Path. Our Support.</p>
+        <div class="hero-v2-brand-row hero-anim" style="--d:0">
+          <img class="hero-brand-logo" src="assets/thuldai-logo.png?v=1" alt="Thuldai — Guide for Australia" width="72" height="72">
+          <p class="hero-v2-eyebrow" style="margin:0">Thuldai · Nepal → Australia</p>
+        </div>
         <h1 class="hero-v2-title hero-anim" style="--d:1">
           <span class="hero-v2-title-line">Arrive Confident.</span>
           <span class="hero-v2-title-line">Settle Fast.</span>
           <span class="hero-v2-title-line hero-v2-title-accent">Thrive in Australia.</span>
         </h1>
-        <p class="hero-v2-lead hero-anim" style="--d:2">Modular guidance for international students — enrol in Nepal, land prepared in any Australian city.</p>
+        <p class="hero-v2-lead hero-anim" style="--d:2">Four tiered support packages for international students — enrol in Nepal, land prepared in any Australian city.</p>
 
         <div class="hero-v2-cta-row hero-anim" style="--d:3">
           <a href="register.html" class="hero-v2-btn hero-v2-btn--primary">
@@ -62,7 +70,7 @@
         </div>
 
         <ul class="hero-v2-stats hero-anim" style="--d:4">
-          <li><strong>10+</strong> modular packages</li>
+          <li><strong>4</strong> tier packages</li>
           <li><strong>Free</strong> airport pickup</li>
           <li><strong>SIM</strong> on enrol in Nepal</li>
         </ul>
@@ -127,32 +135,20 @@
     </a>
   </header>
 
-  <!-- OUR PACKAGES — first thing visitors see after hero -->
+  <!-- OUR PACKAGES -->
   <section class="js-section packages-choose home-packages-flow" id="packages">
     <div class="container">
-      <p class="section-label reveal">Our Packages</p>
-      <h2 class="packages-main-title reveal">Our Packages — Pick What You Need</h2>
-      <p class="packages-intro reveal">Ten modular guidance packages for Nepali students. Toggle before or after arrival, then choose what matches your goals.</p>
-
-      <div class="js-toggle-tabs reveal home-toggle-tabs" id="packageToggle">
-        <button type="button" class="active" data-phase="before">Before you fly</button>
-        <div class="js-toggle-slider" id="toggleSlider"><span></span></div>
-        <button type="button" data-phase="after">After you arrive</button>
+      <div class="packages-section-head reveal">
+        <p class="section-label">Our Packages</p>
+        <h2 class="packages-main-title">Four Settlement Packages</h2>
+        <p class="packages-intro">From arrival essentials to 90-day premium support — each tier includes everything in the levels below it.</p>
       </div>
 
       <div class="js-packages-grid" id="packagesGrid"></div>
 
-      <div class="journey-help-panel home-help-panel reveal">
-        <div class="journey-help-head">
-          <h3>We are with you before and after arrival</h3>
-          <p>Discover what we help with at each stage of your journey.</p>
-        </div>
-        <div class="journey-phase-tabs home-phase-tabs" id="journeyPhaseTabs">
-          <button type="button" class="active" data-phase="before">Before you fly</button>
-          <button type="button" data-phase="after">After you arrive</button>
-        </div>
-        <div class="journey-help-grid home-help-grid" id="journeyHelpGrid"></div>
-      </div>
+      <p class="packages-section-foot reveal">
+        <a href="register.html" class="js-btn js-btn-primary">Enrol in a package →</a>
+      </p>
     </div>
   </section>
 
@@ -164,13 +160,13 @@
       <span>Practice Quiz Tools</span>
       <span>Free Food Tips — Salvation Army · Foodbank</span>
       <span>Free Transport Card Top-Up With Every Package</span>
-      <span>Modular Packages — Pay Only For What You Need</span>
+      <span>Four Tier Packages — Arrival to 90-Day Premium Support</span>
       <span>Free Airport Pickup With Every Package</span>
       <span>SIM Included When You Enrol in Nepal</span>
       <span>Practice Quiz Tools</span>
       <span>Free Food Tips — Salvation Army · Foodbank</span>
       <span>Free Transport Card Top-Up With Every Package</span>
-      <span>Modular Packages — Pay Only For What You Need</span>
+      <span>Four Tier Packages — Arrival to 90-Day Premium Support</span>
     </div>
   </div>
 
@@ -178,26 +174,26 @@
   <section class="bg-light" id="how-it-works">
     <div class="container">
       <p class="section-label reveal">How It Works</p>
-      <h2 class="section-title reveal">Get Started With Global Success</h2>
-      <p class="section-sub reveal">The simple path from Nepal to a confident arrival in Australia. Choose your packages, prepare before you fly, and land ready.</p>
+      <h2 class="section-title reveal">Get Started With Thuldai</h2>
+      <p class="section-sub reveal">The simple path from Nepal to a confident arrival in Australia. Pick your tier, prepare before you fly, and land ready.</p>
       <div class="steps-grid">
         <div class="step-card reveal">
           <div class="step-num">01</div>
-          <h3>Choose Your Packages</h3>
-          <p>Browse our 10 modular packages and optional add-ons. Enrol in Nepal — SIM included with your course. No forced bundle.</p>
+          <h3>Choose Your Tier</h3>
+          <p>Pick Arrival Starter, Student Settlement, Career and Settlement, or Premium 90-Day Support. Each tier includes everything in the levels below.</p>
           <span class="step-tag">Enrol in Nepal</span>
         </div>
         <div class="step-card reveal">
           <div class="step-num">02</div>
-          <h3>Learn and Practice Before You Fly</h3>
-          <p>Attend online classes and use practice quiz tools for each package. Start FSA prep, road rules quizzes, or job search training from home.</p>
-          <span class="step-tag">Online Classes + Quizzes</span>
+          <h3>Prepare Before You Fly</h3>
+          <p>Pre-departure orientation, arrival checklist, and online guidance from our team in Kathmandu, Butwal, or Chitwan.</p>
+          <span class="step-tag">Pre-departure support</span>
         </div>
         <div class="step-card reveal">
           <div class="step-num">03</div>
-          <h3>Arrive and Apply Independently</h3>
-          <p>Free airport pickup in Melbourne or Sydney, free SIM and activation help, free transport card top-up, then apply for jobs, housing, and permits using what you learned.</p>
-          <span class="step-tag">Airport Pickup + Support</span>
+          <h3>Arrive and Settle With Support</h3>
+          <p>Airport pickup, free SIM, transport guidance, then bank, housing, jobs, and ongoing WhatsApp support based on your package tier.</p>
+          <span class="step-tag">Airport pickup + WhatsApp</span>
         </div>
       </div>
     </div>
@@ -207,7 +203,7 @@
   <section id="free-perks">
     <div class="container">
       <p class="section-label reveal">Included Free</p>
-      <h2 class="section-title reveal">Free With Every Package Purchase</h2>
+      <h2 class="section-title reveal">Included From Arrival Starter Upward</h2>
       <div class="perks-grid">
         <div class="perk-card reveal">
           <div class="perk-icon">📱</div>
@@ -231,7 +227,7 @@
         </div>
       </div>
       <div class="visual-banner reveal" style="margin-top:2rem">
-        <img src="assets/sections/free-perks-included.png?v=6" alt="Included free when you enrol — Global Success">
+        <img src="assets/sections/free-perks-included.png?v=6" alt="Included free when you enrol — Thuldai">
       </div>
     </div>
   </section>
@@ -240,13 +236,14 @@
   <section class="js-section packages-addons-visual" id="addons">
     <div class="container">
       <p class="section-label reveal">Optional Extras</p>
-      <h2 class="packages-main-title reveal" style="font-size:clamp(1.75rem,3vw,2.25rem);margin-bottom:1.5rem">Extra Add-On Packages</h2>
-      <p class="packages-intro reveal" style="margin-top:-0.5rem;margin-bottom:1.5rem">Transport card top-up is free with every package. NAATI prep is a main package — not an extra add-on.</p>
+      <h2 class="packages-main-title reveal">Extra add-ons</h2>
+      <p class="packages-intro reveal">Add to any tier at enrolment — pick only what you need.</p>
       <div class="visual-banner reveal">
         <img src="assets/sections/09-extra-addons.png?v=6" alt="Optional extra add-on packages: LinkedIn, resume, bond and lease review, career coaching, IT certification coaching, airport pickup plus">
       </div>
-      <p class="reveal" style="text-align:center;margin-top:1.5rem">
-        <a href="register.html" class="js-btn js-btn-navy">Add extras at enrolment →</a>
+      <div class="js-addons-grid reveal" id="addonsGrid"></div>
+      <p class="reveal tier-section-cta">
+        <a href="register.html#addons" class="js-btn js-btn-navy">Add extras at enrolment →</a>
       </p>
     </div>
   </section>
@@ -255,11 +252,11 @@
   <section class="bg-light" id="why-us">
     <div class="container">
       <p class="section-label reveal">Why Choose Us</p>
-      <h2 class="section-title reveal">What Makes Global Success Different?</h2>
+      <h2 class="section-title reveal">What Makes Thuldai Different?</h2>
       <div class="why-grid">
         <div class="why-card reveal">
-          <h4>Modular packages</h4>
-          <p>Pay only for what you need — no forced all-in-one bundle.</p>
+          <h4>Clear tier packages</h4>
+          <p>Four levels from arrival essentials to 90-day premium — pick the support you need.</p>
         </div>
         <div class="why-card reveal">
           <h4>Nepal-first preparation</h4>
@@ -282,7 +279,7 @@
     <div class="container">
       <div class="js-cta-banner reveal">
         <h2>Ready to Start Your Settlement Journey?</h2>
-        <p style="opacity:0.9;margin-bottom:1.5rem">Choose a package and register — we will contact you within 24–48 hours. We are in Melbourne, Sydney, Kathmandu, Butwal, and Chitwan.</p>
+        <p style="opacity:0.9;margin-bottom:1.5rem">Choose a tier and register — we reply within 24–48 hours, or connect on WhatsApp straight after you submit. We are in Melbourne, Sydney, Kathmandu, Butwal, and Chitwan.</p>
         <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
           <a href="register.html" class="js-btn js-btn-primary">Register Now</a>
           <a href="contact.html" class="js-btn js-btn-navy">Contact and Find Us</a>
@@ -292,7 +289,7 @@
         </p>
       </div>
       <div class="disclaimer-box reveal" style="margin-top:2rem;text-align:left">
-        <strong>Important:</strong> Global Success provides general education and practical orientation only. We do not guarantee employment, issue driving licences, provide housing, open bank accounts on your behalf, or give financial or migration advice.
+        <strong>Important:</strong> Thuldai provides general education and practical orientation only. We do not guarantee employment, issue driving licences, provide housing, open bank accounts on your behalf, or give financial or migration advice.
       </div>
     </div>
   </section>
@@ -300,8 +297,8 @@
   <footer class="footer footer-minimal">
     <div class="container footer-minimal-inner">
       <a href="index.html" class="footer-logo">
-        <img src="assets/global-success-logo.svg?v=3" alt="" width="36" height="36">
-        <span class="logo-word"><strong>Global</strong> <em>Success</em></span>
+        <img src="assets/thuldai-logo.png?v=1" alt="Thuldai — Guide for Australia" width="44" height="44">
+        <span class="logo-word"><strong>Thuldai</strong> <em class="logo-tag">Guide for Australia</em></span>
       </a>
       <div class="footer-minimal-contact">
         <a href="mailto:info@globalsucess.com.np">info@globalsucess.com.np</a>
@@ -309,11 +306,13 @@
     </div>
   </footer>
 
-  <script src="js/text-sanitize.js?v=20260816"></script>
-  <script src="js/packages-data.js?v=20260816"></script>
-  <script src="js/services.js?v=20260816"></script>
-  <script src="js/dingoos.js?v=20260816"></script>
-  <script src="js/journey.js?v=20260816"></script>
+  <script src="js/text-sanitize.js?v=20260828"></script>
+  <script src="js/packages-data.js?v=20260832"></script>
+  <script src="js/services.js?v=20260832"></script>
+  <script src="js/mobile-ui.js?v=20260827"></script>
+  <script src="js/dingoos.js?v=20260827"></script>
+  <script src="js/site-config.js?v=20260830"></script>
+  <script src="js/whatsapp-float.js?v=20260830"></script>
   <script src="js/hero-interactive.js?v=20260816"></script>
   <script src="js/main.js?v=20260816"></script>
 </body>

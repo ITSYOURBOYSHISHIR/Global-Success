@@ -30,15 +30,22 @@
 }
 
 .home-help-panel {
-  margin-top: 3.5rem;
-  border: 2px solid var(--sa-red-pale, #fee2e2);
+  margin-top: 2.5rem;
+  border: 1px solid var(--sa-border);
   background: var(--sa-white);
+}
+
+.home-help-panel .journey-help-head {
+  text-align: center;
+  margin-bottom: 0.25rem;
 }
 
 .home-help-panel .journey-help-head h3 {
   font-family: var(--font-body);
-  font-style: normal;
-  font-weight: 700;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0;
 }
 
 .home-phase-tabs {

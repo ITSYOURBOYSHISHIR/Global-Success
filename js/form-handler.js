@@ -1,4 +1,4 @@
-/** Shared form submission — FormSubmit.co + validation for custom selects */
+/** Shared form submission — FormSubmit.co + WhatsApp handoff */
 const FORM_ENDPOINT = 'https://formsubmit.co/ajax/info@globalsucess.com.np';
 
 function validateForm(form) {
@@ -17,10 +17,10 @@ function validateForm(form) {
   });
 
   if (form.id === 'registerForm') {
-    const goals = form.querySelectorAll('input[name="goals"]');
-    if (!goals.length) {
+    const packages = form.querySelectorAll('input[name="packages"]');
+    if (!packages.length) {
       valid = false;
-      form.querySelector('#panelGoals, #goalChipGrid')?.closest('.aus-enquiry-panel, .form-step')?.classList.add('field-error');
+      form.querySelector('#panelPackages')?.classList.add('field-error');
     }
     const validateEvent = new CustomEvent('register:validate', { cancelable: true });
     form.dispatchEvent(validateEvent);
@@ -60,6 +60,55 @@ function collectFormData(form) {
   return data;
 }
 
+function getRegisterWhatsAppPayload(form, data) {
+  const slug = form.querySelector('input[name="packages"]')?.value;
+  const pkg = typeof getPackage === 'function' ? getPackage(slug) : null;
+  const city = data.get('destinationCity') || '';
+  const travelWhen = data.get('travelWhen') || '';
+
+  return {
+    firstName: data.get('firstName') || '',
+    lastName: data.get('lastName') || '',
+    phone: data.get('phone') || '',
+    whatsapp: data.get('whatsapp') || data.get('phone') || '',
+    email: data.get('email') || '',
+    city,
+    travelWhen,
+    message: data.get('message') || '',
+    packageName: pkg ? (typeof plainLabel === 'function' ? plainLabel(pkg.name) : pkg.name) : data.get('packages')
+  };
+}
+
+function showRegisterWhatsAppSuccess(form, payload) {
+  const guide = typeof getGuideForEnrolment === 'function'
+    ? getGuideForEnrolment(payload.city, payload.travelWhen)
+    : null;
+
+  const message = typeof buildEnrolWhatsAppMessage === 'function'
+    ? buildEnrolWhatsAppMessage(payload)
+    : `Hi, I just enrolled for ${payload.packageName}. My name is ${payload.firstName} ${payload.lastName}.`;
+
+  const waNumber = guide?.whatsapp || guide?.tel?.replace(/\D/g, '');
+  const waUrl = typeof buildWhatsAppUrl === 'function'
+    ? buildWhatsAppUrl(waNumber, message)
+    : '';
+
+  let block = document.getElementById('enrolWhatsAppSuccess');
+  if (!block) {
+    block = document.createElement('div');
+    block.id = 'enrolWhatsAppSuccess';
+    block.className = 'enrol-whatsapp-success';
+    const success = document.getElementById('formSuccess');
+    success?.appendChild(block);
+  }
+
+  block.innerHTML = `
+    <p><strong>Faster reply on WhatsApp</strong> — message ${guide ? guide.name.split(' ')[0] : 'your guide'} directly with your enrolment details pre-filled.</p>
+    ${waUrl ? `<a class="enrol-whatsapp-btn" href="${waUrl}" target="_blank" rel="noopener noreferrer">Continue on WhatsApp</a>` : '<p>Use the phone number we email you to reach your guide.</p>'}
+  `;
+  block.classList.add('show');
+}
+
 async function submitForm(form, options = {}) {
   if (!validateForm(form)) return false;
 
@@ -72,9 +121,11 @@ async function submitForm(form, options = {}) {
 
   const data = collectFormData(form);
   if (!data.get('packages')) data.set('packages', 'None selected');
-  data.append('_subject', options.subject || 'Global Success Website Enquiry');
+  data.append('_subject', options.subject || 'Thuldai Website Enquiry');
   data.append('_captcha', 'false');
   data.append('_template', 'table');
+
+  const registerPayload = form.id === 'registerForm' ? getRegisterWhatsAppPayload(form, data) : null;
 
   try {
     const res = await fetch(FORM_ENDPOINT, {
@@ -84,15 +135,16 @@ async function submitForm(form, options = {}) {
     });
     if (!res.ok) throw new Error('Network error');
     showFormSuccess(form);
+    if (registerPayload) showRegisterWhatsAppSuccess(form, registerPayload);
     return true;
   } catch {
-    /* Fallback — open mailto with form contents */
     const lines = [];
     for (const [k, v] of data.entries()) {
       if (!k.startsWith('_')) lines.push(`${k}: ${v}`);
     }
-    window.location.href = `mailto:info@globalsucess.com.np?subject=${encodeURIComponent(options.subject || 'Global Success Enquiry')}&body=${encodeURIComponent(lines.join('\n'))}`;
+    window.location.href = `mailto:info@globalsucess.com.np?subject=${encodeURIComponent(options.subject || 'Thuldai Enquiry')}&body=${encodeURIComponent(lines.join('\n'))}`;
     showFormSuccess(form);
+    if (registerPayload) showRegisterWhatsAppSuccess(form, registerPayload);
     return true;
   } finally {
     if (btn) {
@@ -119,11 +171,11 @@ function showFormSuccess(form) {
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('registerForm')?.addEventListener('submit', e => {
     e.preventDefault();
-    submitForm(e.target, { subject: 'New Enrolment Request — Global Success' });
+    submitForm(e.target, { subject: 'New Enrolment Request — Thuldai' });
   });
 
   document.getElementById('contactForm')?.addEventListener('submit', e => {
     e.preventDefault();
-    submitForm(e.target, { subject: 'Contact Form — Global Success' });
+    submitForm(e.target, { subject: 'Contact Form — Thuldai' });
   });
 });

@@ -1,81 +1,71 @@
-/** Packages page — render packages + toggle */
+/** Home page — render tiered packages */
 document.addEventListener('DOMContentLoaded', () => {
   const grid = document.getElementById('packagesGrid');
-  const toggle = document.getElementById('packageToggle');
-  const slider = document.getElementById('toggleSlider');
-  let phase = 'before';
+  if (!grid || typeof PACKAGES === 'undefined') return;
 
-  function renderPackages(p) {
-    if (!grid) return;
-    const list = PACKAGES.filter(pkg => pkg.phase === p);
-    grid.innerHTML = list.map(pkg => `
-      <article class="js-package-card ${pkg.popular ? 'popular' : ''}" data-slug="${pkg.slug}">
-        ${pkg.popular ? '<span class="popular-badge">Popular</span>' : ''}
-        <div class="js-package-visual">
-          <img class="package-topic-img" src="${pkg.image || pkg.australia}" alt="${pkg.name}" loading="lazy">
+  function label(text) {
+    return typeof plainLabel === 'function' ? plainLabel(text) : text;
+  }
+
+  function title(pkg) {
+    if (typeof packageTitle === 'function') return packageTitle(pkg);
+    return label(pkg.shortName || pkg.name);
+  }
+
+  function renderFeatureList(pkg) {
+    return pkg.features.map((f, i) => {
+      const isIncludes = i === 0 && pkg.includesPrevious;
+      return `
+        <li class="tier-package-feature ${isIncludes ? 'is-includes' : ''}">
+          <span class="tier-feature-check" aria-hidden="true"></span>
+          <span>${label(f)}</span>
+        </li>
+      `;
+    }).join('');
+  }
+
+  grid.className = 'tier-packages-grid';
+  grid.innerHTML = PACKAGES.map(pkg => `
+    <article class="tier-package-card ${pkg.popular ? 'is-featured' : ''}" data-slug="${pkg.slug}">
+      ${pkg.popular ? '<span class="tier-package-badge">Most popular</span>' : ''}
+      <header class="tier-package-head">
+        <span class="tier-package-num">Tier ${pkg.tier}</span>
+        <h3 class="tier-package-name">${title(pkg)}</h3>
+        <p class="tier-package-tagline">${label(pkg.tagline)}</p>
+      </header>
+      <div class="tier-package-stats">
+        <div class="tier-stat">
+          <strong>${pkg.supportDays}</strong>
+          <span>days support</span>
         </div>
-        <div class="js-package-body">
-          <h3 class="js-package-name">${plainLabel(pkg.name)}</h3>
-          <p class="js-package-desc">${plainLabel(pkg.desc)}</p>
-          <ul class="js-package-features">
-            ${pkg.features.map(f => `<li>${plainLabel(f)}</li>`).join('')}
-          </ul>
-        </div>
-        <div class="js-package-foot">
-          <a href="register.html?package=${pkg.slug}" class="js-btn js-btn-navy">Select Package →</a>
-        </div>
+        ${pkg.consultations ? `
+          <div class="tier-stat">
+            <strong>${pkg.consultations}</strong>
+            <span>consultation${pkg.consultations === 1 ? '' : 's'}</span>
+          </div>
+        ` : ''}
+      </div>
+      <div class="tier-package-body">
+        <p class="tier-package-features-label">What's included</p>
+        <ul class="tier-package-features">${renderFeatureList(pkg)}</ul>
+      </div>
+      <div class="tier-package-foot">
+        <a href="register.html?package=${pkg.slug}" class="js-btn ${pkg.popular ? 'js-btn-primary' : 'js-btn-navy'}">Enrol in this package →</a>
+      </div>
+    </article>
+  `).join('');
+
+  if (typeof window.sanitizeAmpersands === 'function') window.sanitizeAmpersands();
+
+  const addonsGrid = document.getElementById('addonsGrid');
+  if (addonsGrid && typeof ADDONS !== 'undefined' && ADDONS.length) {
+    addonsGrid.innerHTML = ADDONS.map(addon => `
+      <article class="js-addon-card">
+        <h3>${label(addon.name)}</h3>
+        <p>${label(addon.desc)}</p>
+        <span class="js-addon-tag">Optional add-on</span>
       </article>
     `).join('');
-  }
-
-  function setPhase(p, broadcast = true) {
-    phase = p;
-    toggle.classList.toggle('after', p === 'after');
-    toggle.querySelectorAll('button').forEach(btn => {
-      btn.classList.toggle('active', btn.dataset.phase === p);
-    });
-    renderPackages(p);
     if (typeof window.sanitizeAmpersands === 'function') window.sanitizeAmpersands();
-    if (broadcast) {
-      window.dispatchEvent(new CustomEvent('homePhaseChange', { detail: { phase: p } }));
-    }
-  }
-
-  toggle?.querySelectorAll('button[data-phase]').forEach(btn => {
-    btn.addEventListener('click', () => setPhase(btn.dataset.phase));
-  });
-  slider?.addEventListener('click', () => {
-    setPhase(phase === 'before' ? 'after' : 'before');
-  });
-
-  window.addEventListener('homePhaseChange', (e) => {
-    if (e.detail.phase !== phase) setPhase(e.detail.phase, false);
-  });
-
-  setPhase('before', false);
-
-  // Free perks
-  const perksGrid = document.getElementById('freePerksGrid');
-  if (perksGrid) {
-    perksGrid.innerHTML = FREE_PERKS.map(text => `
-      <div class="js-addon-card">
-        <span class="js-addon-tag">Included free</span>
-        <h3>${plainLabel(text)}</h3>
-      </div>
-    `).join('');
-  }
-
-  // Add-ons
-  const addonsGrid = document.getElementById('addonsGrid');
-  if (addonsGrid) {
-    addonsGrid.innerHTML = ADDONS.map(a => `
-      <div class="js-addon-card">
-        <span class="js-addon-tag">${plainLabel(a.tag)}</span>
-        <img src="${a.image}" alt="" class="js-addon-thumb" loading="lazy">
-        <h3>${plainLabel(a.name)}</h3>
-        <p>${plainLabel(a.desc)}</p>
-        <a href="register.html?package=${a.slug}" class="js-btn js-btn-primary" style="font-size:0.85rem;padding:0.6rem 1.2rem">Add to Enrolment →</a>
-      </div>
-    `).join('');
   }
 });

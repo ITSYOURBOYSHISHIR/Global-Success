@@ -600,4 +600,8 @@
   .aus-goal-grid {
     grid-template-columns: 1fr;
   }
+
+  .aus-package-grid {
+    grid-template-columns: 1fr;
+  }
 }

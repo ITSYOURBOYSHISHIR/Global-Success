@@ -17,6 +17,13 @@
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.12) 0%, transparent 28%);
 }
 
+.page-australia .aus-hero-body .page-brand-logo,
+.contact-hero .page-brand-logo,
+.js-register-header .page-brand-logo {
+  margin-left: 0;
+  margin-right: auto;
+}
+
 .page-australia .aus-hero-body {
   max-width: 520px;
   color: var(--sa-black);
@@ -809,6 +816,10 @@
   }
 
   .aus-cities-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .aus-guides .aus-team-grid {
     grid-template-columns: 1fr;
   }
 

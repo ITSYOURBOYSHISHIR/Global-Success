@@ -1,21 +1,14 @@
-/** Enrol page — multi-select goals and packages in separate sections */
+/** Enrol page — tier package selection + WhatsApp handoff */
 
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('registerForm');
   if (!form) return;
 
   const params = new URLSearchParams(window.location.search);
-  const initialSlugs = (params.get('package') || params.get('packages') || '')
-    .split(',')
-    .map(s => s.trim())
-    .filter(Boolean);
+  const initialSlug = params.get('package') || (params.get('packages') || '').split(',')[0]?.trim();
   const initialCity = params.get('city');
 
-  const goalGrid = document.getElementById('goalChipGrid');
-  const gridBefore = document.getElementById('packageGridBefore');
-  const gridAfter = document.getElementById('packageGridAfter');
-  const gridAddons = document.getElementById('packageGridAddons');
-  const goalBadge = document.getElementById('goalBadge');
+  const tierGrid = document.getElementById('tierPackageGrid');
   const packageBadge = document.getElementById('packageBadge');
   const summaryList = document.getElementById('summaryList');
   const summaryDesc = document.getElementById('summaryDesc');
@@ -24,153 +17,134 @@ document.addEventListener('DOMContentLoaded', () => {
   const summaryThumb = document.getElementById('summaryThumb');
   const registerTitle = document.getElementById('registerTitle');
   const registerSubtitle = document.getElementById('registerSubtitle');
+  const addonGrid = document.getElementById('addonGrid');
+  const addonBadge = document.getElementById('addonBadge');
 
-  const selectedGoals = new Set();
-  const selectedPackages = new Set();
+  let selectedPackage = initialSlug && PACKAGES.some(p => p.slug === initialSlug) ? initialSlug : '';
   const selectedAddons = new Set();
 
   function label(text) {
     if (typeof plainLabel === 'function') return plainLabel(text);
-    if (typeof fixAmpersandText === 'function') return fixAmpersandText(text);
     return String(text).replace(/\s*&\s*/g, ' and ');
   }
 
-  function initGoals() {
-    if (!goalGrid || typeof ENROL_GOALS === 'undefined') return;
+  function title(pkg) {
+    if (typeof packageTitle === 'function') return packageTitle(pkg);
+    return label(pkg.shortName || pkg.name);
+  }
 
-    goalGrid.innerHTML = ENROL_GOALS.map(g => `
-      <button type="button" class="goal-chip-btn" data-value="${g.value}" data-package="${g.packageSlug || ''}" aria-pressed="false">
-        <span class="goal-chip-icon" aria-hidden="true">${g.icon}</span>
-        <span class="goal-chip-text">
-          <strong>${label(g.label)}</strong>
-          <small>${label(g.hint)}</small>
-        </span>
+  function renderFeatureList(pkg) {
+    return pkg.features.map((f, i) => {
+      const isIncludes = i === 0 && pkg.includesPrevious;
+      return `
+        <li class="tier-package-feature ${isIncludes ? 'is-includes' : ''}">
+          <span class="tier-feature-check" aria-hidden="true"></span>
+          <span>${label(f)}</span>
+        </li>
+      `;
+    }).join('');
+  }
+
+  function renderTierCards() {
+    if (!tierGrid) return;
+
+    tierGrid.innerHTML = PACKAGES.map(pkg => `
+      <button type="button" class="tier-package-card tier-package-card--select ${pkg.popular ? 'is-featured' : ''} ${selectedPackage === pkg.slug ? 'selected' : ''}"
+        data-slug="${pkg.slug}" aria-pressed="${selectedPackage === pkg.slug ? 'true' : 'false'}">
+        ${pkg.popular ? '<span class="tier-package-badge">Most popular</span>' : ''}
+        <span class="tier-package-check" aria-hidden="true"></span>
+        <header class="tier-package-head">
+          <span class="tier-package-num">Tier ${pkg.tier}</span>
+          <h3 class="tier-package-name">${title(pkg)}</h3>
+          <p class="tier-package-tagline">${label(pkg.tagline)}</p>
+        </header>
+        <div class="tier-package-stats">
+          <div class="tier-stat">
+            <strong>${pkg.supportDays}</strong>
+            <span>days support</span>
+          </div>
+          ${pkg.consultations ? `
+            <div class="tier-stat">
+              <strong>${pkg.consultations}</strong>
+              <span>consultation${pkg.consultations === 1 ? '' : 's'}</span>
+            </div>
+          ` : ''}
+        </div>
+        <div class="tier-package-body">
+          <p class="tier-package-features-label">What's included</p>
+          <ul class="tier-package-features">${renderFeatureList(pkg)}</ul>
+        </div>
       </button>
     `).join('');
 
-    goalGrid.querySelectorAll('.goal-chip-btn').forEach(btn => {
-      btn.addEventListener('click', () => toggleGoal(btn));
+    tierGrid.querySelectorAll('.tier-package-card--select').forEach(btn => {
+      btn.addEventListener('click', () => selectPackage(btn.dataset.slug));
     });
   }
 
-  function toggleGoal(btn) {
-    const value = btn.dataset.value;
-    const isNotSure = value === 'Not sure yet — help me choose';
-
-    if (isNotSure) {
-      if (selectedGoals.has(value)) {
-        selectedGoals.delete(value);
-        btn.classList.remove('selected');
-        btn.setAttribute('aria-pressed', 'false');
-      } else {
-        selectedGoals.clear();
-        goalGrid.querySelectorAll('.goal-chip-btn').forEach(b => {
-          b.classList.remove('selected');
-          b.setAttribute('aria-pressed', 'false');
-        });
-        selectedGoals.add(value);
-        btn.classList.add('selected');
-        btn.setAttribute('aria-pressed', 'true');
-      }
-    } else {
-      selectedGoals.delete('Not sure yet — help me choose');
-      const notSure = goalGrid.querySelector('[data-value="Not sure yet — help me choose"]');
-      if (notSure) {
-        notSure.classList.remove('selected');
-        notSure.setAttribute('aria-pressed', 'false');
-      }
-
-      if (selectedGoals.has(value)) {
-        selectedGoals.delete(value);
-        btn.classList.remove('selected');
-        btn.setAttribute('aria-pressed', 'false');
-      } else {
-        selectedGoals.add(value);
-        btn.classList.add('selected');
-        btn.setAttribute('aria-pressed', 'true');
-      }
-
-      const slug = btn.dataset.package;
-      if (slug && !selectedPackages.has(slug) && !selectedAddons.has(slug)) {
-        togglePackage(slug, ADDONS.some(a => a.slug === slug) ? 'addon' : 'package', true);
-      }
-    }
-
-    document.getElementById('panelGoals')?.classList.remove('field-error');
-    updateGoalHiddenInputs();
-    updateBadges();
-    updateSummary();
-  }
-
-  function buildPackageGrid(container, items, type) {
-    if (!container) return;
-    container.innerHTML = items.map(item => `
-      <button type="button" class="aus-package-card" data-slug="${item.slug}" data-type="${type}" aria-pressed="false">
-        ${item.popular ? '<span class="aus-package-popular">Popular</span>' : ''}
-        <span class="aus-package-check" aria-hidden="true"></span>
-        <img src="${item.image || item.australia}" alt="" loading="lazy">
-        <span class="aus-package-card-body">
-          <span class="aus-package-name">${label(item.name)}</span>
-        </span>
-      </button>
-    `).join('');
-
-    container.querySelectorAll('.aus-package-card').forEach(btn => {
-      btn.addEventListener('click', () => togglePackage(btn.dataset.slug, btn.dataset.type));
-    });
-  }
-
-  function initPackages() {
-    buildPackageGrid(gridBefore, PACKAGES.filter(p => p.phase === 'before'), 'package');
-    buildPackageGrid(gridAfter, PACKAGES.filter(p => p.phase === 'after'), 'package');
-    buildPackageGrid(gridAddons, ADDONS, 'addon');
-  }
-
-  function togglePackage(slug, type, forceOn) {
-    const set = type === 'addon' ? selectedAddons : selectedPackages;
-    const turningOn = forceOn === true ? !set.has(slug) : set.has(slug) ? false : true;
-    if (turningOn) set.add(slug);
-    else set.delete(slug);
-
-    syncPackageUI();
+  function selectPackage(slug) {
+    selectedPackage = slug;
+    renderTierCards();
     updatePackageHiddenInputs();
     updateBadges();
     updateSummary();
-  }
-
-  function syncPackageUI() {
-    document.querySelectorAll('.aus-package-card').forEach(card => {
-      const slug = card.dataset.slug;
-      const active = selectedPackages.has(slug) || selectedAddons.has(slug);
-      card.classList.toggle('selected', active);
-      card.setAttribute('aria-pressed', active ? 'true' : 'false');
-    });
-  }
-
-  function updateGoalHiddenInputs() {
-    const holder = document.getElementById('goalHiddenInputs');
-    if (!holder) return;
-    holder.innerHTML = '';
-    selectedGoals.forEach(value => {
-      const input = document.createElement('input');
-      input.type = 'hidden';
-      input.name = 'goals';
-      input.value = value;
-      holder.appendChild(input);
-    });
+    document.getElementById('panelPackages')?.classList.remove('field-error');
   }
 
   function updatePackageHiddenInputs() {
     const holder = document.getElementById('packageHiddenInputs');
     if (!holder) return;
     holder.innerHTML = '';
-    selectedPackages.forEach(slug => {
+    if (selectedPackage) {
       const input = document.createElement('input');
       input.type = 'hidden';
       input.name = 'packages';
-      input.value = slug;
+      input.value = selectedPackage;
       holder.appendChild(input);
+    }
+  }
+
+  function updateBadges() {
+    if (packageBadge) {
+      packageBadge.textContent = selectedPackage ? '1 selected' : 'Pick one';
+      packageBadge.classList.toggle('has-items', !!selectedPackage);
+    }
+    if (addonBadge) {
+      addonBadge.textContent = selectedAddons.size ? `${selectedAddons.size} selected` : 'Optional';
+      addonBadge.classList.toggle('has-items', selectedAddons.size > 0);
+    }
+  }
+
+  function renderAddonCards() {
+    if (!addonGrid || typeof ADDONS === 'undefined') return;
+
+    addonGrid.innerHTML = ADDONS.map(addon => `
+      <button type="button" class="js-addon-card js-addon-card--select ${selectedAddons.has(addon.slug) ? 'selected' : ''}"
+        data-slug="${addon.slug}" aria-pressed="${selectedAddons.has(addon.slug) ? 'true' : 'false'}">
+        <h3>${label(addon.name)}</h3>
+        <p>${label(addon.desc)}</p>
+        <span class="js-addon-tag">Optional add-on</span>
+      </button>
+    `).join('');
+
+    addonGrid.querySelectorAll('.js-addon-card--select').forEach(btn => {
+      btn.addEventListener('click', () => toggleAddon(btn.dataset.slug));
     });
+  }
+
+  function toggleAddon(slug) {
+    if (selectedAddons.has(slug)) selectedAddons.delete(slug);
+    else selectedAddons.add(slug);
+    renderAddonCards();
+    updateAddonHiddenInputs();
+    updateBadges();
+    updateSummary();
+  }
+
+  function updateAddonHiddenInputs() {
+    const holder = document.getElementById('addonHiddenInputs');
+    if (!holder) return;
+    holder.innerHTML = '';
     selectedAddons.forEach(slug => {
       const input = document.createElement('input');
       input.type = 'hidden';
@@ -180,64 +154,46 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  function updateBadges() {
-    if (goalBadge) {
-      const n = selectedGoals.size;
-      goalBadge.textContent = n ? `${n} goal${n === 1 ? '' : 's'} picked` : 'Pick at least one';
-      goalBadge.classList.toggle('has-items', n > 0);
-    }
-    if (packageBadge) {
-      const n = selectedPackages.size + selectedAddons.size;
-      packageBadge.textContent = n ? `${n} selected` : 'Tap to add';
-      packageBadge.classList.toggle('has-items', n > 0);
-    }
+  function getAddon(slug) {
+    return ADDONS.find(a => a.slug === slug) || null;
   }
 
   function updateSummary() {
-    const pkgs = [...selectedPackages].map(s => getPackage(s)).filter(Boolean);
-    const addons = [...selectedAddons].map(s => getPackage(s)).filter(Boolean);
-    const goals = [...selectedGoals];
-    const total = pkgs.length + addons.length;
+    const pkg = selectedPackage ? getPackage(selectedPackage) : null;
 
     if (summaryList) {
-      if (!goals.length && !total) {
-        summaryList.innerHTML = '<li class="is-empty">Your goals and packages will appear here as you tap.</li>';
+      if (!pkg) {
+        summaryList.innerHTML = '<li class="is-empty">Your package will appear here when you tap one.</li>';
       } else {
-        let html = goals.map(g => `<li><span class="summary-tag">Goal</span>${g}</li>`).join('');
-        html += pkgs.map(p => `<li><span class="summary-tag">Package</span>${label(p.name)}</li>`).join('');
-        html += addons.map(a => `<li><span class="summary-tag">Add-on</span>${label(a.name)}</li>`).join('');
-        summaryList.innerHTML = html;
+        summaryList.innerHTML = `
+          <li><span class="summary-tag">Package</span>${typeof packageTitle === 'function' ? packageTitle(pkg) : label(pkg.shortName || pkg.name)}</li>
+          <li><span class="summary-tag">Support</span>${pkg.supportDays} days</li>
+          ${pkg.consultations ? `<li><span class="summary-tag">Consults</span>${pkg.consultations}</li>` : ''}
+          ${selectedAddons.size ? `<li><span class="summary-tag">Extras</span>${[...selectedAddons].map(slug => label(getAddon(slug)?.name || slug)).join(', ')}</li>` : ''}
+        `;
       }
     }
 
     if (summaryDesc) {
-      if (goals.includes('Not sure yet — help me choose')) {
-        summaryDesc.textContent = 'We will recommend packages after you submit.';
-      } else if (total) {
-        summaryDesc.textContent = `${total} package${total === 1 ? '' : 's'} selected — add more anytime.`;
-      } else if (goals.length) {
-        summaryDesc.textContent = `${goals.length} goal${goals.length === 1 ? '' : 's'} selected — pick matching packages or leave blank.`;
-      } else {
-        summaryDesc.textContent = 'Tap goals and packages — your choices appear here.';
-      }
+      summaryDesc.textContent = pkg
+        ? `${pkg.supportDays}-day support · WhatsApp after submit.`
+        : 'Each tier includes the levels below.';
     }
 
     if (summaryName) {
-      summaryName.textContent = total ? `${total} item${total === 1 ? '' : 's'} selected` : 'Your selection';
+      summaryName.textContent = pkg ? (typeof packageTitle === 'function' ? packageTitle(pkg) : label(pkg.shortName || pkg.name)) : 'Your package';
     }
 
     if (registerTitle) {
-      registerTitle.textContent = total
-        ? (total === 1 ? 'Almost done' : `${total} packages in your request`)
-        : 'Enrol With Global Success';
+      registerTitle.textContent = pkg ? 'Complete enrolment' : 'Enrol';
     }
     if (registerSubtitle) {
-      registerSubtitle.textContent = total
-        ? 'Complete your details below — we will confirm within 24–48 hours.'
-        : 'Pick your goals, choose as many packages as you need, and we will contact you within 24–48 hours.';
+      registerSubtitle.textContent = pkg
+        ? 'Your details — then continue on WhatsApp.'
+        : 'Pick a tier, then send your details.';
     }
 
-    const hero = pkgs[0]?.image || pkgs[0]?.australia || addons[0]?.image || 'assets/images/heroes/students-australia.jpg';
+    const hero = pkg?.image || pkg?.australia || 'assets/images/heroes/students-australia.jpg';
     if (summaryVisual) summaryVisual.style.backgroundImage = `url('${hero}')`;
     if (summaryThumb) summaryThumb.src = hero;
   }
@@ -252,25 +208,19 @@ document.addEventListener('DOMContentLoaded', () => {
     select.dispatchEvent(new Event('change', { bubbles: true }));
   }
 
-  initialSlugs.forEach(slug => {
-    if (ADDONS.some(a => a.slug === slug)) selectedAddons.add(slug);
-    else if (PACKAGES.some(p => p.slug === slug)) selectedPackages.add(slug);
-  });
-
-  initGoals();
-  initPackages();
-  syncPackageUI();
-  updateGoalHiddenInputs();
+  renderTierCards();
+  renderAddonCards();
   updatePackageHiddenInputs();
+  updateAddonHiddenInputs();
   updateBadges();
   updateSummary();
   prefillCity(initialCity);
 
   form.addEventListener('register:validate', e => {
-    if (selectedGoals.size === 0) {
+    if (!selectedPackage) {
       e.preventDefault();
-      document.getElementById('panelGoals')?.classList.add('field-error');
-      document.getElementById('panelGoals')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      document.getElementById('panelPackages')?.classList.add('field-error');
+      document.getElementById('panelPackages')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
   });
 

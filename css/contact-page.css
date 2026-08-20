@@ -649,10 +649,6 @@
 }
 
 @media (max-width: 900px) {
-  .find-us-layout {
-    grid-template-columns: 1fr;
-  }
-
   .contact-help-grid {
     grid-template-columns: 1fr;
   }
